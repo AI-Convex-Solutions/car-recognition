@@ -12,14 +12,39 @@ from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
+def save_checkpoint(epoch, model_state_dict, optimizer_state_dict, epoch_loss, epoch_acc):
+    torch.save({
+        "epoch": epoch,
+        "model_state_dict": model_state_dict,
+        "optimizer_state_dict": optimizer_state_dict,
+        "loss": epoch_loss,
+        "accuracy": epoch_acc,
+    }, "models/checkpoints/checkpoint")
+    print("-------Saved Checkpoint---------\n\n")
 
-def train_model(model, criterion, optimizer, scheduler, num_epochs):
+def load_checkpoint(model, optimizer):
+    checkpoint = torch.load(config.CHECKPOINT_PATH)
+    model.load_state_dict(checkpoint["model_state_dict"])
+    optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+    epoch_loss = checkpoint["loss"]
+    epoch_acc = checkpoint["accuracy"]
+    epoch = checkpoint["epoch"]
+    print(f"-------Loaded {config.CHECKPOINT_PATH} Checkpoint---------")
+    return epoch, model, optimizer, epoch_loss, epoch_acc
+
+
+def train_model(model, criterion, optimizer, scheduler, num_epochs, checkpoint=False):
     since = time.time()
     best_model_weights = copy.deepcopy(model.state_dict())
     best_accuracy = 0.0
 
+    if checkpoint:
+        previously_trained_epochs, model, optimizer, _, _ = load_checkpoint(model, optimizer)
+        # Complete only the rest of epochs.
+        num_epochs = num_epochs - previously_trained_epochs
+
     for epoch in range(num_epochs):
-        print(f"Epoch {epoch} / {num_epochs - 1}")
+        print(f"Epoch {epoch + 1} / {num_epochs}")
         print("-" * 10)
 
         # Each epoch has a training and validation phase
@@ -67,7 +92,8 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs):
                 best_accuracy = epoch_acc
                 best_model_weights = copy.deepcopy(model.state_dict())
 
-        print()
+        save_checkpoint(epoch, best_model_weights, optimizer.state_dict(), epoch_loss, epoch_acc)
+
     time_elapsed = time.time() - since
     print(f"Training complete in {time_elapsed // 60:.0f}, {time_elapsed % 60:.0f}s")
     print(f"Best val accuracy: {best_accuracy}")
@@ -130,5 +156,6 @@ model = train_model(
     criterion,
     optimizer,
     exp_lr_scheduler,
-    config.NUM_EPOCHS
+    config.NUM_EPOCHS,
+    checkpoint=True
 )
