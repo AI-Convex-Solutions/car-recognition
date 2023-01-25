@@ -3,6 +3,7 @@ import time
 
 import numpy as np
 import torch
+import config
 from torch.utils.data import DataLoader, random_split
 from torchvision import models, transforms
 
@@ -10,15 +11,6 @@ from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-CSV_FILE_PATH = "/home/kryekuzhinieri/Documents/from_scratch/dataset.csv"
-BATCH_SIZE = 16
-VAL_SPLIT_SIZE = 0.2
-RANDOM_SEED = 42
-NUM_EPOCHS = 10
-DATASET_PATH = "/home/kryekuzhinieri/Documents/from_scratch/car_recognition/VMMRdb/"
-LEARNING_RATE = 0.001
-MOMENTUM = 0.9
-WEIGHT_DECAY = 0.2
 
 
 def train_model(model, criterion, optimizer, scheduler, num_epochs):
@@ -84,7 +76,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs):
     return model
 
 
-processor = DatasetPreprocessing(path=DATASET_PATH)
+processor = DatasetPreprocessing(path=config.DATASET_PATH)
 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
@@ -92,14 +84,14 @@ transform = transforms.Compose([
     # transforms.Normalize(mean=mean, std=std)
 ])
 
-dataset = VmmrdbDataset(csv_path=CSV_FILE_PATH, transform=transform)
+dataset = VmmrdbDataset(csv_path=config.CSV_FILE_PATH, transform=transform)
 
 # split into train and val data.
-split = int(np.floor(len(dataset) * VAL_SPLIT_SIZE))
+split = int(np.floor(len(dataset) * config.VAL_SPLIT_SIZE))
 train_data, val_data = random_split(dataset, (len(dataset) - split, split))
 
-train_loader = DataLoader(train_data, batch_size=BATCH_SIZE, num_workers=0, shuffle=True)
-val_loader = DataLoader(val_data, batch_size=BATCH_SIZE, num_workers=0, shuffle=True)
+train_loader = DataLoader(train_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
+val_loader = DataLoader(val_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
 
 dataloaders = {
     "train": train_loader,
@@ -126,9 +118,9 @@ criterion = torch.nn.CrossEntropyLoss()
 
 optimizer = torch.optim.SGD(
     model.parameters(),
-    lr=LEARNING_RATE,
-    momentum=MOMENTUM,
-    # weight_decay=WEIGHT_DECAY
+    lr=config.LEARNING_RATE,
+    momentum=config.MOMENTUM,
+    # weight_decay=config.WEIGHT_DECAY
 )
 
 exp_lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
@@ -138,5 +130,5 @@ model = train_model(
     criterion,
     optimizer,
     exp_lr_scheduler,
-    NUM_EPOCHS
+    config.NUM_EPOCHS
 )

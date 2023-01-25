@@ -5,17 +5,12 @@ from torchvision import transforms
 
 from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
 
+import config
 
-# move constansts to config file.
-DATASET_PATH = "/home/kryekuzhinieri/Documents/from_scratch/car_recognition/VMMRdb/"
-VAL_SPLIT_SIZE = 0.2
-BATCH_SIZE = 4
-RANDOM_SEED = 42
-SHUFFLE_DATASET = True
 
-np.random.seed(RANDOM_SEED)
+np.random.seed(config.RANDOM_SEED)
 # Preprocess dataset.
-# processor = DatasetPreprocessing(path=DATASET_PATH)
+# processor = DatasetPreprocessing(path=config.DATASET_PATH)
 # processor.count_classes()
 # processor.build_csv_from_dataset()
 
@@ -28,7 +23,7 @@ transform = transforms.Compose([
 ])
 
 # # Without transforms
-# dataset = VmmrdbDataset(csv_path=CSV_FILE_PATH)
+# dataset = VmmrdbDataset(csv_path=config.CSV_FILE_PATH)
 #
 # fig = plt.figure()
 #
@@ -44,7 +39,7 @@ transform = transforms.Compose([
 # plt.show()
 #
 # # With transforms
-# dataset = VmmrdbDataset(csv_path=CSV_FILE_PATH, transform=transform)
+# dataset = VmmrdbDataset(csv_path=config.CSV_FILE_PATH, transform=transform)
 #
 # fig = plt.figure()
 #
