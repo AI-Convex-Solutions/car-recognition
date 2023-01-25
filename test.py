@@ -5,20 +5,11 @@ from torchvision import models, transforms
 from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
+
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-
-transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    # transforms.Normalize(mean=mean, std=std)
-])
-
-test_data = VmmrdbDataset(csv_path=config.TEST_CSV_FILE_PATH, transform=transform)
-test_loader = DataLoader(test_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
-
-def test_model():
-    model = create_model()
+def test_model(test_data, test_loader, num_classes):
+    model = create_model(num_classes)
     model.load_state_dict(torch.load(config.BEST_MODEL_PATH))
     model.eval()
 
@@ -49,5 +40,3 @@ def visualize_model(inputs, predicted, labels, num_images=4):
         plt.imshow(torch.movedim(inputs[i], 0, 2))
         plt.pause(0.001)
     plt.show()
-
-test_model()

@@ -8,13 +8,11 @@ from torch.utils.data import DataLoader, random_split
 from torchvision import models, transforms
 
 from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
-
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-def create_model():
+def create_model(num_classes):
     model = models.resnet152(weights=models.ResNet152_Weights.DEFAULT)
     # Resnet152 has a final layer with 1000 classes. We change it to the number of our own clases.
-    model.fc = torch.nn.Linear(model.fc.in_features, len(processor.count_classes()))
+    model.fc = torch.nn.Linear(model.fc.in_features, num_classes)
     model = model.to(device)
     return model
 
@@ -39,7 +37,7 @@ def load_checkpoint(model, optimizer):
     return epoch, model, optimizer, epoch_loss, epoch_acc
 
 
-def train_model(model, criterion, optimizer, scheduler, num_epochs, checkpoint=False):
+def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders, dataset_sizes, checkpoint=False):
     since = time.time()
     best_model_weights = copy.deepcopy(model.state_dict())
     best_accuracy = 0.0
@@ -106,50 +104,3 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, checkpoint=F
 
     model.load_state_dict(best_model_weights)
     return model
-
-
-processor = DatasetPreprocessing(path=config.DATASET_PATH)
-
-transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    # transforms.Normalize(mean=mean, std=std)
-])
-
-dataset = VmmrdbDataset(csv_path=config.TRAIN_CSV_FILE_PATH, transform=transform)
-
-# split into train and val data.
-split = int(np.floor(len(dataset) * config.VAL_SPLIT_SIZE))
-train_data, val_data = random_split(dataset, (len(dataset) - split, split))
-
-train_loader = DataLoader(train_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
-val_loader = DataLoader(val_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
-
-dataloaders = {
-    "train": train_loader,
-    "val": val_loader
-}
-
-dataset_sizes = {"train": len(train_data), "val": len(val_data)}
-
-model = create_model()
-
-criterion = torch.nn.CrossEntropyLoss()
-
-optimizer = torch.optim.SGD(
-    model.parameters(),
-    lr=config.LEARNING_RATE,
-    momentum=config.MOMENTUM,
-    # weight_decay=config.WEIGHT_DECAY
-)
-
-exp_lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
-
-# model = train_model(
-    # model,
-    # criterion,
-    # optimizer,
-    # exp_lr_scheduler,
-    # config.NUM_EPOCHS,
-    # # checkpoint=True
-# )
