@@ -11,7 +11,7 @@ class VmmrdbDataset(Dataset):
 
     def __init__(self, csv_path, transform=None):
         """"""
-        self.cars_frame = pd.read_csv(csv_path) #.iloc[:1200, ]
+        self.cars_frame = pd.read_csv(csv_path).iloc[:1200, ]
         self.transform = transform
 
     def __len__(self):

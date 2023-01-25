@@ -8,19 +8,19 @@ from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
 import config
 
 
-np.random.seed(config.RANDOM_SEED)
+# np.random.seed(config.RANDOM_SEED)
 # Preprocess dataset.
-# processor = DatasetPreprocessing(path=config.DATASET_PATH)
-# processor.count_classes()
-# processor.build_csv_from_dataset()
+processor = DatasetPreprocessing(path=config.DATASET_PATH)
+processor.count_classes()
+processor.build_csv_from_dataset()
 
 
 # Built
-transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    # transforms.Normalize(mean=mean, std=std)
-])
+# transform = transforms.Compose([
+    # transforms.Resize((224, 224)),
+    # transforms.ToTensor(),
+    # # transforms.Normalize(mean=mean, std=std)
+# ])
 
 # # Without transforms
 # dataset = VmmrdbDataset(csv_path=config.CSV_FILE_PATH)
