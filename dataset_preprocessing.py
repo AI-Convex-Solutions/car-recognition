@@ -4,6 +4,8 @@ import pandas as pd
 import torch
 from PIL import Image
 from torch.utils.data import Dataset
+from sklearn.model_selection import train_test_split
+import config
 
 
 class VmmrdbDataset(Dataset):
@@ -64,4 +66,9 @@ class DatasetPreprocessing:
                     )
         data = pd.DataFrame(data=data)
         data["label"] = pd.factorize(data["label_name"])[0]
-        data.to_csv(path_or_buf="dataset.csv", index=False)
+        train, test = train_test_split(data, test_size=config.TEST_SPLIT_SIZE)
+        train.to_csv(path_or_buf=config.TRAIN_CSV_FILE_PATH, index=False)
+        test.to_csv(path_or_buf=config.TEST_CSV_FILE_PATH, index=False)
+
+
+

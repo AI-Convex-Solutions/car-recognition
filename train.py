@@ -11,6 +11,12 @@ from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
+def create_model():
+    model = models.resnet152(weights=models.ResNet152_Weights.DEFAULT)
+    # Resnet152 has a final layer with 1000 classes. We change it to the number of our own clases.
+    model.fc = torch.nn.Linear(model.fc.in_features, len(processor.count_classes()))
+    model = model.to(device)
+    return model
 
 def save_checkpoint(epoch, model_state_dict, optimizer_state_dict, epoch_loss, epoch_acc):
     torch.save({
@@ -110,7 +116,7 @@ transform = transforms.Compose([
     # transforms.Normalize(mean=mean, std=std)
 ])
 
-dataset = VmmrdbDataset(csv_path=config.CSV_FILE_PATH, transform=transform)
+dataset = VmmrdbDataset(csv_path=config.TRAIN_CSV_FILE_PATH, transform=transform)
 
 # split into train and val data.
 split = int(np.floor(len(dataset) * config.VAL_SPLIT_SIZE))
@@ -126,19 +132,7 @@ dataloaders = {
 
 dataset_sizes = {"train": len(train_data), "val": len(val_data)}
 
-# for batch, data in enumerate(train_loader):
-#     print(data["image"])
-#     print(data["label"])
-#     break
-
-
-# Initialze Pretrained Resnet152.
-model = models.resnet152(weights=models.ResNet152_Weights.DEFAULT)
-
-# Resnet152 has a final layer with 1000 classes. We change it to the number of our own clases.
-model.fc = torch.nn.Linear(model.fc.in_features, len(processor.count_classes()))
-
-model = model.to(device)
+model = create_model()
 
 criterion = torch.nn.CrossEntropyLoss()
 
@@ -151,11 +145,11 @@ optimizer = torch.optim.SGD(
 
 exp_lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
 
-model = train_model(
-    model,
-    criterion,
-    optimizer,
-    exp_lr_scheduler,
-    config.NUM_EPOCHS,
-    checkpoint=True
-)
+# model = train_model(
+    # model,
+    # criterion,
+    # optimizer,
+    # exp_lr_scheduler,
+    # config.NUM_EPOCHS,
+    # # checkpoint=True
+# )
