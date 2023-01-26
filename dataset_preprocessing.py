@@ -3,8 +3,10 @@ import os
 import pandas as pd
 import torch
 from PIL import Image
-from torch.utils.data import Dataset
+from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
+from torchvision import transforms
+
 import config
 
 
@@ -50,6 +52,28 @@ class DatasetPreprocessing:
         # show how many car companies and how many models
         # here
         return classes
+
+    @staticmethod
+    def compute_dataset_mean_and_std(path):
+        transform = transforms.Compose([
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+        ])
+        dataset = VmmrdbDataset(csv_path=path, transform=transform)
+        dataloader = DataLoader(dataset, batch_size=120, num_workers=0)
+        number_of_images, mean, std = 0, 0, 0
+        for batch_index, data in enumerate(dataloader):
+            image = data["image"]
+            # Rearrange the shape from [B, C, W, H] to be [B, C, W * H]:
+            # [120, 3, 224, 224] -> [120, 3, 50176]
+            image = image.view(image.size(0), image.size(1), -1)
+            number_of_images += image.size(0)
+            mean += image.mean(2).sum(0)
+            std += image.std(2).sum(0)
+        mean /= number_of_images
+        std /= number_of_images
+        print(f"The dataset mean is {mean} and the standard deviation: {std}")
+        return mean, std
 
     def build_csv_from_dataset(self):
         """"""
