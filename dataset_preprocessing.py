@@ -3,8 +3,8 @@ import os
 import pandas as pd
 import torch
 from PIL import Image
-from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
+from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 
 import config
@@ -42,6 +42,7 @@ class VmmrdbDataset(Dataset):
 
 class DatasetPreprocessing:
     """Preprocess the dataset for Pytorch."""
+
     def __init__(self, path):
         self.path = path
 
@@ -77,7 +78,7 @@ class DatasetPreprocessing:
             std += image.std(2).sum(0)
         mean /= number_of_images
         std /= number_of_images
-        print(f"The dataset mean is {mean} and the standard deviation: {std}")
+        print(f"The dataset mean is {mean} and the standard deviation: {std}.\n")
         return mean, std
 
     def build_csv_from_dataset(self):
@@ -98,6 +99,3 @@ class DatasetPreprocessing:
         train, test = train_test_split(data, test_size=config.TEST_SPLIT_SIZE)
         train.to_csv(path_or_buf=config.TRAIN_CSV_FILE_PATH, index=False)
         test.to_csv(path_or_buf=config.TEST_CSV_FILE_PATH, index=False)
-
-
-

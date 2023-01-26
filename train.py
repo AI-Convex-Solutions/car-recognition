@@ -1,16 +1,13 @@
 import copy
 import time
 
-import numpy as np
 import torch
 from matplotlib import pyplot as plt
+from torchvision import models
 
 import config
-from torch.utils.data import DataLoader, random_split
-from torchvision import models, transforms
 
-from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = "cpu"  # torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 def create_model(num_classes):

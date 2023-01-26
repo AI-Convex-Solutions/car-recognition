@@ -1,6 +1,5 @@
 """"""
 
-
 DATASET_PATH = "./VMMRdb"
 CHECKPOINT_PATH = "./models/checkpoints/checkpoint"
 BEST_MODEL_PATH = "./models/best_model_bs16_ne2_lr0.001_m0.9_wd0.2_ss0.2"

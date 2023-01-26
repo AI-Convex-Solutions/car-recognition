@@ -1,14 +1,14 @@
+import argparse
+
 import numpy as np
 import torch
 from torch.utils.data import DataLoader, random_split
 from torchvision import transforms
 
-from train import create_model, train_model
+import config
 from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
 from test import test_model
-
-import config
-import argparse
+from train import create_model, train_model
 
 device = "cpu"  # torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(torch.get_num_threads())
@@ -32,7 +32,6 @@ transform = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize(mean=mean, std=std)
 ])
-
 
 if args.train:
     dataset = VmmrdbDataset(csv_path=config.TRAIN_CSV_FILE_PATH, transform=transform)
@@ -78,4 +77,3 @@ if args.evaluate:
     test_data = VmmrdbDataset(csv_path=config.TEST_CSV_FILE_PATH, transform=transform)
     test_loader = DataLoader(test_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
     test_model(test_data, test_loader, num_classes)
-
