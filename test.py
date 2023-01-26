@@ -4,7 +4,7 @@ import torch
 import config
 from train import create_model
 
-device = "cpu"  # torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 def test_model(test_data, test_loader, num_classes):

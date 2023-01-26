@@ -10,8 +10,7 @@ from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
 from test import test_model
 from train import create_model, train_model
 
-device = "cpu"  # torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-print(torch.get_num_threads())
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 parser = argparse.ArgumentParser(description="Car Recognition")
 parser.add_argument("-p", "--preprocess", action="store_true", help="Make dataset ready for training.")
