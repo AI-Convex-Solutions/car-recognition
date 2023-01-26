@@ -10,7 +10,7 @@ from test import test_model
 import config
 import argparse
 
-device = "cpu" # torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = "cpu"  # torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(torch.get_num_threads())
 
 parser = argparse.ArgumentParser(description="Car Recognition")
@@ -59,10 +59,9 @@ if args.train:
         model.parameters(),
         lr=config.LEARNING_RATE,
         momentum=config.MOMENTUM,
-        # weight_decay=config.WEIGHT_DECAY
     )
 
-    exp_lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
+    exp_lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1)
 
     model = train_model(
         model,

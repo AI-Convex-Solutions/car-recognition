@@ -11,12 +11,15 @@ from torchvision import models, transforms
 
 from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+
 def create_model(num_classes):
     model = models.resnet152(weights=models.ResNet152_Weights.DEFAULT)
     # Resnet152 has a final layer with 1000 classes. We change it to the number of our own clases.
     model.fc = torch.nn.Linear(model.fc.in_features, num_classes)
     model = model.to(device)
     return model
+
 
 def save_checkpoint(epoch, model_state_dict, optimizer_state_dict, epoch_loss, epoch_acc):
     torch.save({
@@ -27,6 +30,7 @@ def save_checkpoint(epoch, model_state_dict, optimizer_state_dict, epoch_loss, e
         "accuracy": epoch_acc,
     }, "models/checkpoints/checkpoint")
     print("-------Saved Checkpoint---------\n\n")
+
 
 def load_checkpoint(model, optimizer):
     checkpoint = torch.load(config.CHECKPOINT_PATH)

@@ -48,9 +48,14 @@ class DatasetPreprocessing:
     def count_classes(self):
         """"""
         classes = [entry.name for entry in os.scandir(self.path) if entry.is_dir()]
+        manufacturers, models = [], []
+        for n in classes:
+            values = n.split("_")
+            manufacturers.append(values[0])
+            models.append(values[1])
         print(f"Dataset has {len(classes)} different classes.")
-        # show how many car companies and how many models
-        # here
+        print(f"Dataset has {len(set(manufacturers))} different manufacturers.")
+        print(f"Dataset has {len(set(models))} different car models.\n")
         return classes
 
     @staticmethod
