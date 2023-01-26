@@ -3,6 +3,8 @@ import time
 
 import numpy as np
 import torch
+from matplotlib import pyplot as plt
+
 import config
 from torch.utils.data import DataLoader, random_split
 from torchvision import models, transforms
@@ -41,6 +43,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
     since = time.time()
     best_model_weights = copy.deepcopy(model.state_dict())
     best_accuracy = 0.0
+    train_loss, val_loss = [], []
 
     if checkpoint:
         previously_trained_epochs, model, optimizer, _, _ = load_checkpoint(model, optimizer)
@@ -89,6 +92,11 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
             epoch_loss = running_loss / dataset_sizes[phase]
             epoch_acc = running_corrects / dataset_sizes[phase]
 
+            if phase == "train":
+                train_loss.append(epoch_loss)
+            else:
+                val_loss.append(epoch_loss)
+
             print(f"Phase {phase} Loss: {epoch_loss:.4f}, Acc: {epoch_acc:.4f}")
 
             # deep copy the model
@@ -103,4 +111,8 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
     print(f"Best val accuracy: {best_accuracy}")
 
     model.load_state_dict(best_model_weights)
+    plt.plot(range(1, len(train_loss) + 1), train_loss, label="training loss")
+    plt.plot(range(1, len(val_loss) + 1), val_loss, label="validation loss")
+    plt.legend()
+    plt.show()
     return model
