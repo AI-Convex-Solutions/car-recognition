@@ -22,6 +22,8 @@ processor = DatasetPreprocessing(path=config.DATASET_PATH)
 num_classes = len(processor.count_classes())
 
 if args.preprocess:
+    processor.remove_missing_data("databases/VNSHdb")
+    processor.remove_missing_data("databases/VMMRdb")
     processor.build_csv_from_dataset()
 
 mean, std = processor.compute_dataset_mean_and_std(config.TRAIN_CSV_FILE_PATH)

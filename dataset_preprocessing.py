@@ -1,4 +1,5 @@
 import os
+import shutil
 
 import pandas as pd
 import torch
@@ -15,7 +16,7 @@ class VmmrdbDataset(Dataset):
 
     def __init__(self, csv_path, transform=None):
         """"""
-        self.cars_frame = pd.read_csv(csv_path).iloc[:1200, ]
+        self.cars_frame = pd.read_csv(csv_path)
         self.transform = transform
 
     def __len__(self):
@@ -99,3 +100,22 @@ class DatasetPreprocessing:
         train, test = train_test_split(data, test_size=config.TEST_SPLIT_SIZE)
         train.to_csv(path_or_buf=config.TRAIN_CSV_FILE_PATH, index=False)
         test.to_csv(path_or_buf=config.TEST_CSV_FILE_PATH, index=False)
+
+    @staticmethod
+    def remove_missing_data(path):
+        for entry in os.scandir(path):
+            if entry.is_dir:
+                name = entry.name.split("_")
+                if "" in name:
+                    name.remove("")
+                if "Tjetër" in name:
+                    name.remove("Tjetër")
+                if len(name) < 3:
+                    shutil.rmtree(entry)
+                    continue
+                if "Mercedes-Benz" in name:
+                    name[0] = "Mercedes Benz"
+                name = [word.replace("ë", "e").lower() for word in name]
+                name = "_".join(name)
+                os.rename(entry, os.path.join(path, name))
+        print("Dataset cleaned successfully!")
