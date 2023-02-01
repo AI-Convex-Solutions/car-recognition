@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import torch
+import logging
 
 import config
 from train import create_model
@@ -24,7 +25,7 @@ def test_model(test_data, test_loader, num_classes):
 
             accuracy += torch.sum(preds == labels_.data).item()
             samples += preds.size(0)
-    print(f"Model Accuracy: {(accuracy / samples):.4f}, Samples: {samples}")
+    logging.info(f"Model Accuracy: {(accuracy / samples):.4f}, Samples: {samples}")
     visualize_model(inputs_, preds, labels_)
 
 
@@ -34,7 +35,7 @@ def visualize_model(inputs, predicted, labels, num_images=4):
     for i in range(num_images):
         ax = plt.subplot(1, 4, i + 1)
         plt.tight_layout()
-        ax.set_title(f"Predicted: {predicted[i]} - Actual: {labels[i]}")
+        ax.set_title(f"Predicted: {predicted[i]} - Actual: {labels[i]}", fontsize=7)
         plt.imshow(torch.movedim(inputs[i], 0, 2))
         plt.pause(0.001)
-    plt.show()
+    plt.savefig(f"{config.IMAGE_PATHS}test_samples.png", dpi=200)

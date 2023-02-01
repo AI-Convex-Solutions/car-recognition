@@ -1,5 +1,6 @@
 import copy
 import time
+import logging
 
 import torch
 from matplotlib import pyplot as plt
@@ -25,18 +26,18 @@ def save_checkpoint(epoch, model_state_dict, optimizer_state_dict, epoch_loss, e
         "optimizer_state_dict": optimizer_state_dict,
         "loss": epoch_loss,
         "accuracy": epoch_acc,
-    }, "models/checkpoints/checkpoint")
-    print("-------Saved Checkpoint---------\n\n")
+    }, config.CHECKPOINT_NAME)
+    logging.info("-------Saved Checkpoint---------\n\n")
 
 
 def load_checkpoint(model, optimizer):
-    checkpoint = torch.load(config.CHECKPOINT_PATH)
+    checkpoint = torch.load(config.CHECKPOINT_NAME)
     model.load_state_dict(checkpoint["model_state_dict"])
     optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
     epoch_loss = checkpoint["loss"]
     epoch_acc = checkpoint["accuracy"]
     epoch = checkpoint["epoch"]
-    print(f"-------Loaded {config.CHECKPOINT_PATH} Checkpoint---------")
+    logging.info(f"-------Loaded {config.CHECKPOINT_NAME} Checkpoint---------")
     return epoch, model, optimizer, epoch_loss, epoch_acc
 
 
@@ -52,8 +53,8 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
         num_epochs = num_epochs - previously_trained_epochs
 
     for epoch in range(num_epochs):
-        print(f"Epoch {epoch + 1} / {num_epochs}")
-        print("-" * 10)
+        logging.info(f"Epoch {epoch + 1} / {num_epochs}")
+        logging.info("-" * 10)
 
         # Each epoch has a training and validation phase
         for phase in ["train", "val"]:
@@ -98,7 +99,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
             else:
                 val_loss.append(epoch_loss)
 
-            print(f"Phase {phase} Loss: {epoch_loss:.4f}, Acc: {epoch_acc:.4f}")
+            logging.info(f"Phase {phase} Loss: {epoch_loss:.4f}, Acc: {epoch_acc:.4f}")
 
             # deep copy the model
             if phase == "val" and epoch_acc > best_accuracy:
@@ -108,12 +109,13 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
         save_checkpoint(epoch, best_model_weights, optimizer.state_dict(), epoch_loss, epoch_acc)
 
     time_elapsed = time.time() - since
-    print(f"Training complete in {time_elapsed // 60:.0f}, {time_elapsed % 60:.0f}s")
-    print(f"Best val accuracy: {best_accuracy}")
+    logging.info(f"Training complete in {time_elapsed // 60:.0f}, {time_elapsed % 60:.0f}s")
+    logging.info(f"Best val accuracy: {best_accuracy}")
 
     model.load_state_dict(best_model_weights)
+    torch.save(model.state_dict(), config.BEST_MODEL_PATH)
     plt.plot(range(1, len(train_loss) + 1), train_loss, label="training loss")
     plt.plot(range(1, len(val_loss) + 1), val_loss, label="validation loss")
     plt.legend()
-    plt.show()
+    plt.savefig(f"{config.IMAGE_PATHS}val_vs_training.png")
     return model

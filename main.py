@@ -1,4 +1,6 @@
 import argparse
+import logging
+from pathlib import Path
 
 import numpy as np
 import torch
@@ -9,6 +11,24 @@ import config
 from dataset_preprocessing import CustomDataset, DatasetPreprocessing
 from test import test_model
 from train import create_model, train_model
+
+
+Path(config.IMAGE_PATHS).mkdir(parents=True, exist_ok=True)
+Path(config.CHECKPOINT_PATH).mkdir(parents=True, exist_ok=True)
+Path(config.LOGS_PATHS).mkdir(parents=True, exist_ok=True)
+
+# Saving all terminal output in a txt file.
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filename=f"{config.LOGS_PATHS}logs",
+    filemode='w'
+)
+console = logging.StreamHandler()
+console.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+console.setFormatter(formatter)
+logging.getLogger("").addHandler(console)
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -77,3 +97,4 @@ if args.evaluate:
     test_data = CustomDataset(csv_path=config.TEST_CSV_FILE_PATH, transform=transform)
     test_loader = DataLoader(test_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
     test_model(test_data, test_loader, num_classes)
+

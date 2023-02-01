@@ -1,0 +1,12 @@
+2023-02-01 16:09:33,806 - INFO - Dataset has 14 different classes.
+2023-02-01 16:09:33,807 - INFO - Dataset has 4 different manufacturers.
+2023-02-01 16:09:33,807 - INFO - Dataset has 12 different car models.
+
+2023-02-01 16:09:33,807 - INFO - Dataset cleaned successfully!
+2023-02-01 16:09:36,752 - INFO - The dataset mean is tensor([0.4300, 0.4240, 0.4185]) and the standard deviation: tensor([0.2472, 0.2432, 0.2385]).
+
+2023-02-01 16:09:40,045 - INFO - Model Accuracy: 0.5333, Samples: 45
+2023-02-01 16:09:40,245 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-01 16:09:40,279 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-01 16:09:40,369 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-01 16:09:40,470 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).

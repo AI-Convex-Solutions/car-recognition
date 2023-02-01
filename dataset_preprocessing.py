@@ -1,6 +1,7 @@
 import os
 import shutil
 import json
+import logging
 
 import pandas as pd
 import torch
@@ -56,9 +57,9 @@ class DatasetPreprocessing:
             values = n.split("_")
             manufacturers.append(values[0])
             models.append(values[1])
-        print(f"Dataset has {len(classes)} different classes.")
-        print(f"Dataset has {len(set(manufacturers))} different manufacturers.")
-        print(f"Dataset has {len(set(models))} different car models.\n")
+        logging.info(f"Dataset has {len(classes)} different classes.")
+        logging.info(f"Dataset has {len(set(manufacturers))} different manufacturers.")
+        logging.info(f"Dataset has {len(set(models))} different car models.\n")
         return classes
 
     @staticmethod
@@ -80,7 +81,7 @@ class DatasetPreprocessing:
             std += image.std(2).sum(0)
         mean /= number_of_images
         std /= number_of_images
-        print(f"The dataset mean is {mean} and the standard deviation: {std}.\n")
+        logging.info(f"The dataset mean is {mean} and the standard deviation: {std}.\n")
         return mean, std
 
     def build_csv_from_dataset(self):
@@ -122,4 +123,4 @@ class DatasetPreprocessing:
                 name = [word.replace("ë", "e").lower() for word in name]
                 name = "_".join(name)
                 os.rename(entry, os.path.join(path, name))
-        print("Dataset cleaned successfully!")
+        logging.info("Dataset cleaned successfully!")
