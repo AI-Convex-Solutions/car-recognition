@@ -123,4 +123,9 @@ class DatasetPreprocessing:
                 name = [word.replace("ë", "e").lower() for word in name]
                 name = "_".join(name)
                 os.rename(entry, os.path.join(path, name))
+                for image in os.scandir(entry):
+                    try:
+                        Image.open(image.path).convert('RGB')
+                    except:
+                        os.remove(image)
         logging.info("Dataset cleaned successfully!")

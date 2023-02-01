@@ -22,6 +22,10 @@ def test_model(test_data, test_loader, num_classes):
 
             outputs = model(inputs_)
             _, preds = torch.max(outputs, dim=1)
+            logging.info("Predictions")
+            logging.info(preds)
+            logging.info("labels")
+            logging.info(labels_.data)
 
             accuracy += torch.sum(preds == labels_.data).item()
             samples += preds.size(0)
@@ -33,7 +37,7 @@ def visualize_model(inputs, predicted, labels, num_images=4):
     inputs = inputs.cpu()
     fig = plt.figure()
     for i in range(num_images):
-        ax = plt.subplot(1, 4, i + 1)
+        ax = plt.subplot(1, num_images, i + 1)
         plt.tight_layout()
         ax.set_title(f"Predicted: {predicted[i]} - Actual: {labels[i]}", fontsize=7)
         plt.imshow(torch.movedim(inputs[i], 0, 2))

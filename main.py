@@ -89,8 +89,8 @@ if args.train:
         exp_lr_scheduler,
         config.NUM_EPOCHS,
         dataloaders,
-        dataset_sizes
-        # checkpoint=True
+        dataset_sizes,
+        checkpoint=False
     )
 
 if args.evaluate:
