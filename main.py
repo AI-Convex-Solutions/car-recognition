@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader, random_split
 from torchvision import transforms
 
 import config
-from dataset_preprocessing import VmmrdbDataset, DatasetPreprocessing
+from dataset_preprocessing import CustomDataset, DatasetPreprocessing
 from test import test_model
 from train import create_model, train_model
 
@@ -22,8 +22,7 @@ processor = DatasetPreprocessing(path=config.DATASET_PATH)
 num_classes = len(processor.count_classes())
 
 if args.preprocess:
-    processor.remove_missing_data("databases/VNSHdb")
-    processor.remove_missing_data("databases/VMMRdb")
+    processor.remove_missing_data(config.DATASET_PATH)
     processor.build_csv_from_dataset()
 
 mean, std = processor.compute_dataset_mean_and_std(config.TRAIN_CSV_FILE_PATH)
@@ -35,7 +34,7 @@ transform = transforms.Compose([
 ])
 
 if args.train:
-    dataset = VmmrdbDataset(csv_path=config.TRAIN_CSV_FILE_PATH, transform=transform)
+    dataset = CustomDataset(csv_path=config.TRAIN_CSV_FILE_PATH, transform=transform)
 
     # split into train and val data.
     split = int(np.floor(len(dataset) * config.VAL_SPLIT_SIZE))
@@ -75,6 +74,6 @@ if args.train:
     )
 
 if args.evaluate:
-    test_data = VmmrdbDataset(csv_path=config.TEST_CSV_FILE_PATH, transform=transform)
+    test_data = CustomDataset(csv_path=config.TEST_CSV_FILE_PATH, transform=transform)
     test_loader = DataLoader(test_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
     test_model(test_data, test_loader, num_classes)

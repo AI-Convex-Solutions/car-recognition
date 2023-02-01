@@ -1,5 +1,6 @@
 import os
 import shutil
+import json
 
 import pandas as pd
 import torch
@@ -11,7 +12,7 @@ from torchvision import transforms
 import config
 
 
-class VmmrdbDataset(Dataset):
+class CustomDataset(Dataset):
     """Vehicle Make and Model Recognition dataset (VMMRdb)"""
 
     def __init__(self, csv_path, transform=None):
@@ -66,7 +67,7 @@ class DatasetPreprocessing:
             transforms.Resize((224, 224)),
             transforms.ToTensor(),
         ])
-        dataset = VmmrdbDataset(csv_path=path, transform=transform)
+        dataset = CustomDataset(csv_path=path, transform=transform)
         dataloader = DataLoader(dataset, batch_size=120, num_workers=0)
         number_of_images, mean, std = 0, 0, 0
         for batch_index, data in enumerate(dataloader):
@@ -96,10 +97,13 @@ class DatasetPreprocessing:
                         }
                     )
         data = pd.DataFrame(data=data)
-        data["label"] = pd.factorize(data["label_name"])[0]
+        labels = pd.factorize(data["label_name"])
+        data["label"] = labels[0]
         train, test = train_test_split(data, test_size=config.TEST_SPLIT_SIZE)
         train.to_csv(path_or_buf=config.TRAIN_CSV_FILE_PATH, index=False)
         test.to_csv(path_or_buf=config.TEST_CSV_FILE_PATH, index=False)
+        with open(config.JSON_LABELS_FILE_PATH, "w") as f:
+            json.dump(list(labels[1]), f)
 
     @staticmethod
     def remove_missing_data(path):

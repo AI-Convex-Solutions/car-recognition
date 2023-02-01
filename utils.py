@@ -6,7 +6,7 @@
 # ])
 
 # # Without transforms
-# dataset = VmmrdbDataset(csv_path=config.CSV_FILE_PATH)
+# dataset = CustomDataset(csv_path=config.CSV_FILE_PATH)
 #
 # fig = plt.figure()
 #
@@ -22,7 +22,7 @@
 # plt.show()
 #
 # # With transforms
-# dataset = VmmrdbDataset(csv_path=config.CSV_FILE_PATH, transform=transform)
+# dataset = CustomDataset(csv_path=config.CSV_FILE_PATH, transform=transform)
 #
 # fig = plt.figure()
 #
