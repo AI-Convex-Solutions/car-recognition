@@ -38,14 +38,17 @@ parser.add_argument("-t", "--train", action="store_true", help="Train the model 
 parser.add_argument("-e", "--evaluate", action="store_true", help="Test the trained model.")
 args = parser.parse_args()
 
-processor = DatasetPreprocessing(path=config.DATASET_PATH)
-num_classes = len(processor.count_classes())
+processor = DatasetPreprocessing(
+    database_path=config.DATASET_PATH,
+    csv_path=config.TRAIN_CSV_FILE_PATH,
+)
 
 if args.preprocess:
-    processor.remove_missing_data(config.DATASET_PATH)
+    processor.remove_missing_data()
     processor.build_csv_from_dataset()
 
-mean, std = processor.compute_dataset_mean_and_std(config.TRAIN_CSV_FILE_PATH)
+num_classes = len(processor.count_classes())
+mean, std = processor.compute_dataset_mean_and_std()
 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
@@ -54,7 +57,10 @@ transform = transforms.Compose([
 ])
 
 if args.train:
-    dataset = CustomDataset(csv_path=config.TRAIN_CSV_FILE_PATH, transform=transform)
+    dataset = CustomDataset(
+        csv_path=config.TRAIN_CSV_FILE_PATH,
+        transform=transform
+    )
 
     # split into train and val data.
     split = int(np.floor(len(dataset) * config.VAL_SPLIT_SIZE))
@@ -94,7 +100,10 @@ if args.train:
     )
 
 if args.evaluate:
-    test_data = CustomDataset(csv_path=config.TEST_CSV_FILE_PATH, transform=transform)
+    test_data = CustomDataset(
+        csv_path=config.TEST_CSV_FILE_PATH,
+        transform=transform
+    )
     test_loader = DataLoader(test_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
     test_model(test_data, test_loader, num_classes)
 

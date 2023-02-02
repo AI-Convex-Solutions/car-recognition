@@ -1,7 +1,8 @@
-2023-02-02 12:03:31,944 - INFO - Dataset has 15 different classes.
-2023-02-02 12:03:31,944 - INFO - Dataset has 4 different manufacturers.
-2023-02-02 12:03:31,944 - INFO - Dataset has 13 different car models.
+2023-02-02 12:54:32,040 - INFO - Dataset cleaned successfully!
+2023-02-02 12:54:36,491 - INFO - Dataset has 15 different classes.
+2023-02-02 12:54:36,491 - INFO - Dataset has 4 different manufacturers.
+2023-02-02 12:54:36,492 - INFO - Dataset has 13 different car models.
+2023-02-02 12:54:36,492 - INFO - Dataset has 13 different car years.
 
-2023-02-02 12:03:33,683 - INFO - Dataset cleaned successfully!
-2023-02-02 12:03:37,809 - INFO - The dataset mean is tensor([0.4279, 0.4237, 0.4187]) and the standard deviation: tensor([0.2467, 0.2423, 0.2387]).
+2023-02-02 12:54:41,695 - INFO - The dataset mean is tensor([0.4283, 0.4246, 0.4205]) and the standard deviation: tensor([0.2460, 0.2424, 0.2391]).
 

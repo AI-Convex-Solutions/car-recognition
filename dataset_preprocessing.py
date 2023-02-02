@@ -31,6 +31,9 @@ class CustomDataset(Dataset):
         # image_name = self.cars_frame.loc[idx, "image_name"]
         image = Image.open(self.cars_frame.loc[idx, "image_path"]).convert('RGB')
         label = self.cars_frame.loc[idx, "label"]
+        manufacturer = self.cars_frame.loc[idx, "manufacturer"]
+        model = self.cars_frame.loc[idx, "model"]
+        year = self.cars_frame.loc[idx, "year"]
 
         if self.transform:
             image = self.transform(image)
@@ -38,40 +41,42 @@ class CustomDataset(Dataset):
         sample = {
             "image": image,
             "label": label,
+            "manufacturer": manufacturer,
+            "model": model,
+            "year": year,
         }
-
         return sample
 
 
 class DatasetPreprocessing:
     """Preprocess the dataset for Pytorch."""
 
-    def __init__(self, path):
-        self.path = path
-
-    def count_classes(self):
-        """"""
-        classes = [entry.name for entry in os.scandir(self.path) if entry.is_dir()]
-        manufacturers, models = [], []
-        for n in classes:
-            values = n.split("_")
-            manufacturers.append(values[0])
-            models.append(values[1])
-        logging.info(f"Dataset has {len(classes)} different classes.")
-        logging.info(f"Dataset has {len(set(manufacturers))} different manufacturers.")
-        logging.info(f"Dataset has {len(set(models))} different car models.\n")
-        return classes
-
-    @staticmethod
-    def compute_dataset_mean_and_std(path):
+    def __init__(self, database_path, csv_path):
         transform = transforms.Compose([
             transforms.Resize((224, 224)),
             transforms.ToTensor(),
         ])
-        dataset = CustomDataset(csv_path=path, transform=transform)
-        dataloader = DataLoader(dataset, batch_size=120, num_workers=0)
+        dataset = CustomDataset(csv_path=csv_path, transform=transform)
+        self.path = database_path
+        self.csv_path = csv_path
+        self.dataloader = DataLoader(dataset, batch_size=120, num_workers=0)
+
+    def count_classes(self):
+        """"""
+        data = {"label": [], "manufacturer": [], "model": [], "year": []}
+        for batch_index, batch in enumerate(self.dataloader):
+            for col in ["label", "manufacturer", "model", "year"]:
+                data[col].extend(batch[col].tolist())
+
+        logging.info(f"Dataset has {len(set(data['label']))} different classes.")
+        logging.info(f"Dataset has {len(set(data['manufacturer']))} different manufacturers.")
+        logging.info(f"Dataset has {len(set(data['model']))} different car models.")
+        logging.info(f"Dataset has {len(set(data['year']))} different car years.\n")
+        return data
+
+    def compute_dataset_mean_and_std(self):
         number_of_images, mean, std = 0, 0, 0
-        for batch_index, data in enumerate(dataloader):
+        for batch_index, data in enumerate(self.dataloader):
             image = data["image"]
             # Rearrange the shape from [B, C, W, H] to be [B, C, W * H]:
             # [120, 3, 224, 224] -> [120, 3, 50176]
@@ -99,7 +104,7 @@ class DatasetPreprocessing:
                     )
         data = pd.DataFrame(data=data)
         label_codes = {}
-        column_names = ["manfucaturer", "model", "year"]
+        column_names = ["manufacturer", "model", "year"]
         data[column_names] = data["label_name"].str.split(pat="_", n=2, expand=True)
         column_names.append("label_name")
         for column in column_names:
@@ -115,9 +120,8 @@ class DatasetPreprocessing:
         with open(config.JSON_LABELS_FILE_PATH, "w") as f:
             json.dump(label_codes, f)
 
-    @staticmethod
-    def remove_missing_data(path):
-        for entry in os.scandir(path):
+    def remove_missing_data(self):
+        for entry in os.scandir(self.path):
             if entry.is_dir:
                 name = entry.name.split("_")
                 if "" in name:
@@ -131,7 +135,7 @@ class DatasetPreprocessing:
                     name[0] = "Mercedes Benz"
                 name = [word.replace("ë", "e").lower() for word in name]
                 name = "_".join(name)
-                os.rename(entry, os.path.join(path, name))
+                os.rename(entry, os.path.join(self.path, name))
                 for image in os.scandir(entry):
                     try:
                         Image.open(image.path).convert('RGB')
