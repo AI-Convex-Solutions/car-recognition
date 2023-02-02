@@ -1,6 +1,6 @@
 """"""
 
-DATASET_PATH = "./databases/VNSHdb"
+DATASET_PATH = "./databases/Sampledb"
 CHECKPOINT_PATH = "./models/checkpoints"
 CHECKPOINT_NAME = f"{CHECKPOINT_PATH}/checkpoint"
 TRAIN_CSV_FILE_PATH = "./datasets/train.csv"
@@ -17,3 +17,4 @@ NUM_EPOCHS = 60
 LEARNING_RATE = 0.001
 MOMENTUM = 0.9
 WEIGHT_DECAY = 0.2
+MULTI_OUTPUT = True

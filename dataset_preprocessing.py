@@ -98,13 +98,22 @@ class DatasetPreprocessing:
                         }
                     )
         data = pd.DataFrame(data=data)
-        labels = pd.factorize(data["label_name"])
-        data["label"] = labels[0]
+        label_codes = {}
+        column_names = ["manfucaturer", "model", "year"]
+        data[column_names] = data["label_name"].str.split(pat="_", n=2, expand=True)
+        column_names.append("label_name")
+        for column in column_names:
+            codes = pd.factorize(data[column])
+            label_codes[column] = list(codes[1])
+            if column == "label_name":
+                data["label"] = codes[0]
+            else:
+                data[column] = codes[0]
         train, test = train_test_split(data, test_size=config.TEST_SPLIT_SIZE)
         train.to_csv(path_or_buf=config.TRAIN_CSV_FILE_PATH, index=False)
         test.to_csv(path_or_buf=config.TEST_CSV_FILE_PATH, index=False)
         with open(config.JSON_LABELS_FILE_PATH, "w") as f:
-            json.dump(list(labels[1]), f)
+            json.dump(label_codes, f)
 
     @staticmethod
     def remove_missing_data(path):
