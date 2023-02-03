@@ -1,8 +1,24 @@
-2023-02-02 12:54:32,040 - INFO - Dataset cleaned successfully!
-2023-02-02 12:54:36,491 - INFO - Dataset has 15 different classes.
-2023-02-02 12:54:36,491 - INFO - Dataset has 4 different manufacturers.
-2023-02-02 12:54:36,492 - INFO - Dataset has 13 different car models.
-2023-02-02 12:54:36,492 - INFO - Dataset has 13 different car years.
+2023-02-03 17:15:56,402 - INFO - Dataset has 15 different classes.
+2023-02-03 17:15:56,402 - INFO - Dataset has 4 different manufacturers.
+2023-02-03 17:15:56,402 - INFO - Dataset has 13 different car models.
+2023-02-03 17:15:56,402 - INFO - Dataset has 13 different car years.
 
-2023-02-02 12:54:41,695 - INFO - The dataset mean is tensor([0.4283, 0.4246, 0.4205]) and the standard deviation: tensor([0.2460, 0.2424, 0.2391]).
+2023-02-03 17:15:59,961 - INFO - The dataset mean is tensor([0.4263, 0.4226, 0.4183]) and the standard deviation: tensor([0.2465, 0.2427, 0.2395]).
 
+2023-02-03 17:16:03,017 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:03,051 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:03,129 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:03,220 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:03,667 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:03,768 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:03,857 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:03,948 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:04,380 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:04,481 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:04,583 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:04,690 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:05,038 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:05,149 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:05,257 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:05,368 - WARNING - Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+2023-02-03 17:16:05,614 - INFO - Model Accuracy: {'manufacturer': 0.7735849056603774, 'car_model': 0.6037735849056604, 'year': 0.5849056603773585}, Samples: 53

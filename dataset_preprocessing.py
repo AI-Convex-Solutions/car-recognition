@@ -32,7 +32,7 @@ class CustomDataset(Dataset):
         image = Image.open(self.cars_frame.loc[idx, "image_path"]).convert('RGB')
         label = self.cars_frame.loc[idx, "label"]
         manufacturer = self.cars_frame.loc[idx, "manufacturer"]
-        model = self.cars_frame.loc[idx, "model"]
+        car_model = self.cars_frame.loc[idx, "car_model"]
         year = self.cars_frame.loc[idx, "year"]
 
         if self.transform:
@@ -42,7 +42,7 @@ class CustomDataset(Dataset):
             "image": image,
             "label": label,
             "manufacturer": manufacturer,
-            "model": model,
+            "car_model": car_model,
             "year": year,
         }
         return sample
@@ -63,14 +63,14 @@ class DatasetPreprocessing:
 
     def count_classes(self):
         """"""
-        data = {"label": [], "manufacturer": [], "model": [], "year": []}
+        data = {"label": [], "manufacturer": [], "car_model": [], "year": []}
         for batch_index, batch in enumerate(self.dataloader):
-            for col in ["label", "manufacturer", "model", "year"]:
+            for col in ["label", "manufacturer", "car_model", "year"]:
                 data[col].extend(batch[col].tolist())
 
         logging.info(f"Dataset has {len(set(data['label']))} different classes.")
         logging.info(f"Dataset has {len(set(data['manufacturer']))} different manufacturers.")
-        logging.info(f"Dataset has {len(set(data['model']))} different car models.")
+        logging.info(f"Dataset has {len(set(data['car_model']))} different car models.")
         logging.info(f"Dataset has {len(set(data['year']))} different car years.\n")
         return data
 
@@ -104,7 +104,7 @@ class DatasetPreprocessing:
                     )
         data = pd.DataFrame(data=data)
         label_codes = {}
-        column_names = ["manufacturer", "model", "year"]
+        column_names = ["manufacturer", "car_model", "year"]
         data[column_names] = data["label_name"].str.split(pat="_", n=2, expand=True)
         column_names.append("label_name")
         for column in column_names:

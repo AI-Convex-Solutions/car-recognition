@@ -10,7 +10,7 @@ from torchvision import transforms
 import config
 from dataset_preprocessing import CustomDataset, DatasetPreprocessing
 from test import test_model
-from train import create_model, train_model
+from train import create_model, train_model, Classifier
 
 
 Path(config.IMAGE_PATHS).mkdir(parents=True, exist_ok=True)
@@ -47,7 +47,7 @@ if args.preprocess:
     processor.remove_missing_data()
     processor.build_csv_from_dataset()
 
-num_classes = len(processor.count_classes())
+num_classes = processor.count_classes()
 mean, std = processor.compute_dataset_mean_and_std()
 
 transform = transforms.Compose([
@@ -76,8 +76,8 @@ if args.train:
 
     dataset_sizes = {"train": len(train_data), "val": len(val_data)}
 
-    model = create_model(num_classes)
-
+    # model = create_model(num_classes)
+    model = Classifier(num_classes).to(device)
     criterion = torch.nn.CrossEntropyLoss()
 
     optimizer = torch.optim.SGD(

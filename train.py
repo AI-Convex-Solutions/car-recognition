@@ -19,7 +19,48 @@ def create_model(num_classes):
     return model
 
 
-def save_checkpoint(epoch, model_state_dict, optimizer_state_dict, epoch_loss, epoch_acc):
+class Classifier(torch.nn.Module):
+    def __init__(self, num_classes):
+        super(Classifier, self).__init__()
+        self.resnet = models.resnet152(
+            weights=models.ResNet152_Weights.DEFAULT
+        )
+        number_of_features = self.resnet.fc.in_features
+        self.resnet.fc = torch.nn.Identity()
+        # sets a value for each existing label. For example:
+        # self.car_model = torch.nn.Linear(features, all_classes)
+        for label in config.LABELS:
+            setattr(
+                self,
+                label,
+                torch.nn.Linear(
+                    number_of_features,
+                    len(set(num_classes[label]))
+                )
+            )
+
+    def forward(self, x):
+        x = self.resnet(x)
+        data = {}
+        # calls each label -> self.manufacturer(x)
+        for label in config.LABELS:
+            data[label] = getattr(self, label)(x)
+        return data
+
+
+def compute_loss(outputs, labels, criterion):
+    all_preds = {}
+    for label in config.LABELS:
+        _, preds = torch.max(outputs[label], dim=1)
+        all_preds[label] = preds
+
+    losses = {k: criterion(outputs[k], labels[k]) for k, v in labels.items()}
+    losses = sum(losses.values())
+    return losses, all_preds
+
+
+def save_checkpoint(
+        epoch, model_state_dict, optimizer_state_dict, epoch_loss, epoch_acc):
     torch.save({
         "epoch": epoch,
         "model_state_dict": model_state_dict,
@@ -41,14 +82,19 @@ def load_checkpoint(model, optimizer):
     return epoch, model, optimizer, epoch_loss, epoch_acc
 
 
-def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders, dataset_sizes, checkpoint=False):
+def train_model(
+        model, criterion, optimizer, scheduler, num_epochs,
+        dataloaders, dataset_sizes, checkpoint=False):
     since = time.time()
     best_model_weights = copy.deepcopy(model.state_dict())
     best_accuracy = 0.0
     train_loss, val_loss = [], []
 
     if checkpoint:
-        previously_trained_epochs, model, optimizer, _, _ = load_checkpoint(model, optimizer)
+        previously_trained_epochs, model, optimizer, _, _ = load_checkpoint(
+            model,
+            optimizer
+        )
         # Complete only the rest of epochs.
         num_epochs = num_epochs - previously_trained_epochs
 
@@ -64,11 +110,14 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
                 model.eval()
 
             running_loss = 0.0
-            running_corrects = 0
+            running_corrects = {v: 0 for v in config.LABELS}
 
             for batch_idx, batch_data in enumerate(dataloaders[phase]):
                 inputs_ = batch_data["image"].to(device)
-                labels_ = batch_data["label"].to(device)
+                labels = {
+                    label: batch_data[label].to(device)
+                    for label in config.LABELS
+                }
 
                 # zero the parameter gradients
                 optimizer.zero_grad()
@@ -76,37 +125,54 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
                 # forward and trach history if only train.
                 with torch.set_grad_enabled(phase == "train"):
                     outputs = model(inputs_)
-                    _, preds = torch.max(outputs, dim=1)
-                    loss = criterion(outputs, labels_)
+                    losses, all_label_predictions = compute_loss(
+                        outputs,
+                        labels,
+                        criterion
+                    )
 
                     # backward + optimize only if in training phase.
                     if phase == "train":
-                        loss.backward()
+                        # loss.backward()
+                        losses.backward()
                         optimizer.step()
 
                 # statistics
-                running_loss += loss.item() * inputs_.size(0)
-                running_corrects += torch.sum(preds == labels_.data).item()
+                running_loss += losses.item() * inputs_.size(0)
+                for label in config.LABELS:
+                    running_corrects[label] += torch.sum(
+                        all_label_predictions[label] == labels[label].data
+                    ).item()
 
             if phase == "train":
                 scheduler.step()
 
             epoch_loss = running_loss / dataset_sizes[phase]
-            epoch_acc = running_corrects / dataset_sizes[phase]
+            epoch_acc = {
+                k: v / dataset_sizes[phase]
+                for k, v in running_corrects.items()
+            }
 
             if phase == "train":
                 train_loss.append(epoch_loss)
             else:
                 val_loss.append(epoch_loss)
 
-            logging.info(f"Phase {phase} Loss: {epoch_loss:.4f}, Acc: {epoch_acc:.4f}")
+            logging.info(
+                f"Phase {phase} Loss: {epoch_loss:.4f}, Acc: {epoch_acc}")
 
             # deep copy the model
-            if phase == "val" and epoch_acc > best_accuracy:
+            if phase == "val":  # and epoch_acc > best_accuracy:
                 best_accuracy = epoch_acc
                 best_model_weights = copy.deepcopy(model.state_dict())
 
-        save_checkpoint(epoch, best_model_weights, optimizer.state_dict(), epoch_loss, epoch_acc)
+        save_checkpoint(
+            epoch,
+            best_model_weights,
+            optimizer.state_dict(),
+            epoch_loss,
+            epoch_acc
+        )
 
     time_elapsed = time.time() - since
     logging.info(f"Training complete in {time_elapsed // 60:.0f}, {time_elapsed % 60:.0f}s")
