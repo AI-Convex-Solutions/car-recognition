@@ -29,10 +29,10 @@ def test_model(test_data, test_loader, num_classes):
             all_label_predictions = {}
             for label in config.LABELS:
                 _, preds = torch.max(outputs[label], dim=1)
-#                 logging.info(label)
-                # logging.info(preds.data.tolist())
-                # logging.info(labels[label].data.tolist())
-                # logging.info("")
+                logging.info(label)
+                logging.info(preds.data.tolist())
+                logging.info(labels[label].data.tolist())
+                logging.info("")
 
                 accuracy[label] += torch.sum(preds == labels[label].data).item()
                 all_label_predictions[label] = preds

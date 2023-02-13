@@ -59,13 +59,16 @@ class DatasetPreprocessing:
         dataset = CustomDataset(csv_path=csv_path, transform=transform)
         self.path = database_path
         self.csv_path = csv_path
-        self.dataloader = DataLoader(dataset, batch_size=120, num_workers=0)
+        self.dataloader = DataLoader(dataset, batch_size=16, num_workers=5)
 
+    @torch.no_grad()
     def count_classes(self):
         """"""
-        data = {"label": [], "manufacturer": [], "car_model": [], "year": []}
+        labels = ["label"]
+        labels.extend(config.LABELS)
+        data = {label: [] for label in labels}
         for batch_index, batch in enumerate(self.dataloader):
-            for col in ["label", "manufacturer", "car_model", "year"]:
+            for col in labels:
                 data[col].extend(batch[col].tolist())
 
         logging.info(f"Dataset has {len(set(data['label']))} different classes.")
@@ -74,6 +77,7 @@ class DatasetPreprocessing:
         logging.info(f"Dataset has {len(set(data['year']))} different car years.\n")
         return data
 
+    @torch.no_grad()
     def compute_dataset_mean_and_std(self):
         number_of_images, mean, std = 0, 0, 0
         for batch_index, data in enumerate(self.dataloader):
@@ -119,6 +123,7 @@ class DatasetPreprocessing:
         test.to_csv(path_or_buf=config.TEST_CSV_FILE_PATH, index=False)
         with open(config.JSON_LABELS_FILE_PATH, "w") as f:
             json.dump(label_codes, f)
+        logging.info("Dataset was build successfully!")
 
     def remove_missing_data(self):
         for entry in os.scandir(self.path):
