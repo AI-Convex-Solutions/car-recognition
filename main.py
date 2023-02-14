@@ -29,6 +29,7 @@ console.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 console.setFormatter(formatter)
 logging.getLogger("").addHandler(console)
+logging.info("Starting script...")
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -38,17 +39,21 @@ parser.add_argument("-t", "--train", action="store_true", help="Train the model 
 parser.add_argument("-e", "--evaluate", action="store_true", help="Test the trained model.")
 args = parser.parse_args()
 
+
+# Clean the data for the first time.
+if args.preprocess:
+    preprocessor = DatasetPreprocessing(
+        database_path=config.DATASET_PATH,
+        csv_path=config.TRAIN_CSV_FILE_PATH,
+    )
+    # preprocessor.remove_missing_data()
+    preprocessor.build_csv_from_dataset()
+
 processor = DatasetPreprocessing(
     database_path=config.DATASET_PATH,
     csv_path=config.TRAIN_CSV_FILE_PATH,
 )
-
-if args.preprocess:
-    processor.remove_missing_data()
-    processor.build_csv_from_dataset()
-
-num_classes = processor.count_classes()
-mean, std = processor.compute_dataset_mean_and_std()
+num_classes, mean, std = processor.count_classes_mean_and_std()
 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),

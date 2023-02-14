@@ -1,0 +1,9 @@
+2023-02-14 15:54:02,890 - INFO - Starting script...
+2023-02-14 15:54:02,898 - INFO - Dataset was build successfully!
+2023-02-14 15:54:04,032 - INFO - The dataset mean is tensor([0.4271, 0.4232, 0.4191]) and the standard deviation: tensor([0.2466, 0.2427, 0.2397]).
+
+2023-02-14 15:54:04,032 - INFO - Dataset has 7 different classes.
+2023-02-14 15:54:04,032 - INFO - Dataset has 7 different manufacturers.
+2023-02-14 15:54:04,032 - INFO - Dataset has 7 different car models.
+2023-02-14 15:54:04,032 - INFO - Dataset has 7 different car years.
+

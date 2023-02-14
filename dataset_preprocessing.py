@@ -62,20 +62,35 @@ class DatasetPreprocessing:
         self.dataloader = DataLoader(dataset, batch_size=16, num_workers=5)
 
     @torch.no_grad()
-    def count_classes(self):
+    def count_classes_mean_and_std(self):
         """"""
         labels = ["label"]
         labels.extend(config.LABELS)
-        data = {label: [] for label in labels}
-        for batch_index, batch in enumerate(self.dataloader):
-            for col in labels:
-                data[col].extend(batch[col].tolist())
+        results = {label: [] for label in labels}
+        number_of_images, mean, std = 0, 0, 0
+        for batch_index, data in enumerate(self.dataloader):
+            # Compute mean, std.
+            image = data["image"]
+            # Rearrange the shape from [B, C, W, H] to be [B, C, W * H]:
+            # [120, 3, 224, 224] -> [120, 3, 50176]
+            image = image.view(image.size(0), image.size(1), -1)
+            number_of_images += image.size(0)
+            mean += image.mean(2).sum(0)
+            std += image.std(2).sum(0)
 
+            # Count classes
+            for col in labels:
+                results[col].extend(data[col].tolist())
+
+        mean /= number_of_images
+        std /= number_of_images
+
+        logging.info(f"The dataset mean is {mean} and the standard deviation: {std}.\n")
         logging.info(f"Dataset has {len(set(data['label']))} different classes.")
         logging.info(f"Dataset has {len(set(data['manufacturer']))} different manufacturers.")
         logging.info(f"Dataset has {len(set(data['car_model']))} different car models.")
         logging.info(f"Dataset has {len(set(data['year']))} different car years.\n")
-        return data
+        return results, mean, std
 
     @torch.no_grad()
     def compute_dataset_mean_and_std(self):
