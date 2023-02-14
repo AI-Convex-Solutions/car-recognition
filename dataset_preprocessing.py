@@ -85,11 +85,16 @@ class DatasetPreprocessing:
         mean /= number_of_images
         std /= number_of_images
 
-        logging.info(f"The dataset mean is {mean} and the standard deviation: {std}.\n")
-        logging.info(f"Dataset has {len(set(data['label']))} different classes.")
-        logging.info(f"Dataset has {len(set(data['manufacturer']))} different manufacturers.")
-        logging.info(f"Dataset has {len(set(data['car_model']))} different car models.")
-        logging.info(f"Dataset has {len(set(data['year']))} different car years.\n")
+        logging.info(
+            f"The dataset mean is {mean} and the standard deviation: {std}.\n")
+        logging.info(
+            f"Dataset has {len(set(data['label']))} different classes.")
+        logging.info(
+            f"Dataset has {len(set(data['manufacturer']))} different manufacturers.")
+        logging.info(
+            f"Dataset has {len(set(data['car_model']))} different car models.")
+        logging.info(
+            f"Dataset has {len(set(data['year']))} different car years.\n")
         return results, mean, std
 
     @torch.no_grad()
@@ -124,7 +129,10 @@ class DatasetPreprocessing:
         data = pd.DataFrame(data=data)
         label_codes = {}
         column_names = ["manufacturer", "car_model", "year"]
-        data[column_names] = data["label_name"].str.split(pat="_", n=2, expand=True)
+        data[column_names] = data["label_name"].str.split(
+            pat="_", n=2,
+            expand=True
+        )
         column_names.append("label_name")
         for column in column_names:
             codes = pd.factorize(data[column])

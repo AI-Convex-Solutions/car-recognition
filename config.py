@@ -1,7 +1,7 @@
 """"""
 
 # Datasets
-DATASET_PATH = "./databases/Sampledb"
+DATASET_PATH = "./databases/VNSHdb"
 TEST_CSV_FILE_PATH = "./datasets/test.csv"
 TRAIN_CSV_FILE_PATH = "./datasets/train.csv"
 JSON_LABELS_FILE_PATH = "./datasets/label_codes.json"
