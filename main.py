@@ -46,7 +46,7 @@ if args.preprocess:
         database_path=config.DATASET_PATH,
         csv_path=config.TRAIN_CSV_FILE_PATH,
     )
-    # preprocessor.remove_missing_data()
+    preprocessor.remove_missing_data()
     preprocessor.build_csv_from_dataset()
 
 processor = DatasetPreprocessing(
@@ -91,7 +91,11 @@ if args.train:
         momentum=config.MOMENTUM,
     )
 
-    exp_lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1)
+    exp_lr_scheduler = torch.optim.lr_scheduler.StepLR(
+        optimizer,
+        step_size=20,
+        gamma=0.1
+    )
 
     model = train_model(
         model,
@@ -101,7 +105,7 @@ if args.train:
         config.NUM_EPOCHS,
         dataloaders,
         dataset_sizes,
-        checkpoint=False
+        checkpoint=True
     )
 
 if args.evaluate:

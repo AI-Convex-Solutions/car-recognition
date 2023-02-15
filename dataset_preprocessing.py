@@ -9,6 +9,7 @@ from PIL import Image
 from sklearn.model_selection import train_test_split
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
+from multiprocessing.pool import ThreadPool
 
 import config
 
@@ -149,6 +150,14 @@ class DatasetPreprocessing:
         logging.info("Dataset was build successfully!")
 
     def remove_missing_data(self):
+        pool = ThreadPool()
+
+        def worker(image):
+            try:
+                Image.open(image.path).convert('RGB')
+            except Exception:
+                os.remove(image)
+
         for entry in os.scandir(self.path):
             if entry.is_dir:
                 name = entry.name.split("_")
@@ -163,10 +172,10 @@ class DatasetPreprocessing:
                     name[0] = "Mercedes Benz"
                 name = [word.replace("ë", "e").lower() for word in name]
                 name = "_".join(name)
-                os.rename(entry, os.path.join(self.path, name))
-                for image in os.scandir(entry):
-                    try:
-                        Image.open(image.path).convert('RGB')
-                    except:
-                        os.remove(image)
+                new_name = os.path.join(self.path, name)
+                os.rename(entry, new_name)
+                for image in os.scandir(new_name):
+                    pool.apply_async(worker, (image, ))
+        pool.close()
+        pool.join()
         logging.info("Dataset cleaned successfully!")
