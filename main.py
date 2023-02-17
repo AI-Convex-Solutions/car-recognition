@@ -71,8 +71,18 @@ if args.train:
     split = int(np.floor(len(dataset) * config.VAL_SPLIT_SIZE))
     train_data, val_data = random_split(dataset, (len(dataset) - split, split))
 
-    train_loader = DataLoader(train_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
-    val_loader = DataLoader(val_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
+    train_loader = DataLoader(
+        train_data,
+        batch_size=config.BATCH_SIZE,
+        num_workers=5,
+        shuffle=True
+    )
+    val_loader = DataLoader(
+        val_data,
+        batch_size=config.BATCH_SIZE,
+        num_workers=5,
+        shuffle=True
+    )
 
     dataloaders = {
         "train": train_loader,
@@ -105,14 +115,24 @@ if args.train:
         config.NUM_EPOCHS,
         dataloaders,
         dataset_sizes,
-        checkpoint=True
+        checkpoint=False
     )
 
 if args.evaluate:
+    processor = DatasetPreprocessing(
+        database_path=config.DATASET_PATH,
+        csv_path=config.TEST_CSV_FILE_PATH,
+    )
+    _, mean, std = processor.count_classes_mean_and_std()
     test_data = CustomDataset(
         csv_path=config.TEST_CSV_FILE_PATH,
         transform=transform
     )
-    test_loader = DataLoader(test_data, batch_size=config.BATCH_SIZE, num_workers=0, shuffle=True)
+    test_loader = DataLoader(
+        test_data,
+        batch_size=config.BATCH_SIZE,
+        num_workers=5,
+        shuffle=True
+    )
     test_model(test_data, test_loader, num_classes)
 

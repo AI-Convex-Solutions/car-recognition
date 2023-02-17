@@ -2,6 +2,7 @@ import copy
 import time
 import logging
 
+import numpy as np
 import torch
 from matplotlib import pyplot as plt
 from torchvision import models
@@ -87,7 +88,7 @@ def train_model(
         dataloaders, dataset_sizes, checkpoint=False):
     since = time.time()
     best_model_weights = copy.deepcopy(model.state_dict())
-    best_accuracy = 0.0
+    best_accuracy = {v: 0 for v in config.LABELS}
     train_loss, val_loss = [], []
 
     if checkpoint:
@@ -162,17 +163,17 @@ def train_model(
                 f"Phase {phase} Loss: {epoch_loss:.4f}, Acc: {epoch_acc}")
 
             # deep copy the model
-            if phase == "val":  # and epoch_acc > best_accuracy:
+            if phase == "val" and np.mean(list(epoch_acc.values())) > np.mean(list(best_accuracy.values())):
                 best_accuracy = epoch_acc
                 best_model_weights = copy.deepcopy(model.state_dict())
 
-        save_checkpoint(
-            epoch,
-            best_model_weights,
-            optimizer.state_dict(),
-            epoch_loss,
-            epoch_acc
-        )
+                save_checkpoint(
+                    epoch,
+                    best_model_weights,
+                    optimizer.state_dict(),
+                    epoch_loss,
+                    epoch_acc
+                )
 
     time_elapsed = time.time() - since
     logging.info(f"Training complete in {time_elapsed // 60:.0f}, {time_elapsed % 60:.0f}s")
