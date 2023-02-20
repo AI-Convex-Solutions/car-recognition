@@ -10,7 +10,8 @@ from torchvision import transforms
 import config
 from dataset_preprocessing import CustomDataset, DatasetPreprocessing
 from test import test_model
-from train import create_model, train_model, Classifier
+from train import train_model, Classifier
+from utils import clear_memory
 
 
 Path(config.IMAGE_PATHS).mkdir(parents=True, exist_ok=True)
@@ -33,6 +34,9 @@ logging.info("Starting script...")
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
+# Delete any previous cache from cuda.
+torch.cuda.empty_cache()
+
 parser = argparse.ArgumentParser(description="Car Recognition")
 parser.add_argument("-p", "--preprocess", action="store_true", help="Make dataset ready for training.")
 parser.add_argument("-t", "--train", action="store_true", help="Train the model with config.py")
@@ -48,12 +52,14 @@ if args.preprocess:
     )
     preprocessor.remove_missing_data()
     preprocessor.build_csv_from_dataset()
+    clear_memory(preprocessor)
 
 processor = DatasetPreprocessing(
     database_path=config.DATASET_PATH,
     csv_path=config.TRAIN_CSV_FILE_PATH,
 )
 num_classes, mean, std = processor.count_classes_mean_and_std()
+clear_memory(processor)
 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
@@ -124,6 +130,7 @@ if args.evaluate:
         csv_path=config.TEST_CSV_FILE_PATH,
     )
     _, mean, std = processor.count_classes_mean_and_std()
+    clear_memory(processor)
     test_data = CustomDataset(
         csv_path=config.TEST_CSV_FILE_PATH,
         transform=transform

@@ -37,7 +37,7 @@ def test_model(test_data, test_loader, num_classes):
                 accuracy[label] += torch.sum(preds == labels[label].data).item()
                 all_label_predictions[label] = preds
 
-            visualize_model(inputs_, all_label_predictions, labels, batch_idx)
+            # visualize_model(inputs_, all_label_predictions, labels, batch_idx)
             samples += inputs_.size(0)
     accuracy = {k: v / samples for k, v in accuracy.items()}
     logging.info(f"Model Accuracy: {accuracy}, Samples: {samples}")

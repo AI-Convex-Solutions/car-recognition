@@ -89,13 +89,13 @@ class DatasetPreprocessing:
         logging.info(
             f"The dataset mean is {mean} and the standard deviation: {std}.\n")
         logging.info(
-            f"Dataset has {len(set(data['label']))} different classes.")
+            f"Dataset has {len(set(results['label']))} different classes.")
         logging.info(
-            f"Dataset has {len(set(data['manufacturer']))} different manufacturers.")
+            f"Dataset has {len(set(results['manufacturer']))} different manufacturers.")
         logging.info(
-            f"Dataset has {len(set(data['car_model']))} different car models.")
+            f"Dataset has {len(set(results['car_model']))} different car models.")
         logging.info(
-            f"Dataset has {len(set(data['year']))} different car years.\n")
+            f"Dataset has {len(set(results['year']))} different car years.\n")
         return results, mean, std
 
     @torch.no_grad()
