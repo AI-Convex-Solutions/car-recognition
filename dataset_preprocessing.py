@@ -149,13 +149,28 @@ class DatasetPreprocessing:
             json.dump(label_codes, f)
         logging.info("Dataset was build successfully!")
 
-    def remove_missing_data(self):
+    def remove_missing_data(self, augmentation):
         pool = ThreadPool()
+        from torchvision.utils import save_image
+        import random
+        import string
+        transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.RandomRotation(degrees=(0, 360))
+        ])
 
         def worker(image):
             try:
-                Image.open(image.path).convert('RGB')
-            except Exception:
+                img = Image.open(image.path).convert('RGB')
+                if augmentation:
+                    new_image = transform(img)
+                    image_name = ''.join(
+                        random.choice(string.ascii_uppercase + string.digits)
+                        for _ in range(10)
+                    )
+                    new_image_path = f"{os.path.dirname(image.path)}/{image_name}.jpg"
+                    save_image(new_image, new_image_path)
+            except Exception as e:
                 os.remove(image)
 
         for entry in os.scandir(self.path):

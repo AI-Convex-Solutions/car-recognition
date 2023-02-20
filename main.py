@@ -50,7 +50,7 @@ if args.preprocess:
         database_path=config.DATASET_PATH,
         csv_path=config.TRAIN_CSV_FILE_PATH,
     )
-    preprocessor.remove_missing_data()
+    preprocessor.remove_missing_data(augmentation=config.PERFORM_AUGMENTATION)
     preprocessor.build_csv_from_dataset()
     clear_memory(preprocessor)
 

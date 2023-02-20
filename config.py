@@ -2,10 +2,11 @@
 from datetime import datetime
 
 # Datasets
-DATASET_PATH = "./databases/VNSHdb"
+DATASET_PATH = "./databases/Sampledb-222"
 TEST_CSV_FILE_PATH = "./datasets/test.csv"
 TRAIN_CSV_FILE_PATH = "./datasets/train.csv"
 JSON_LABELS_FILE_PATH = "./datasets/label_codes.json"
+PERFORM_AUGMENTATION = True
 
 # Models
 CHECKPOINT_PATH = "./models/checkpoints"
