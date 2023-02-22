@@ -1,211 +1,54 @@
 image_name,image_path,label_name,manufacturer,car_model,year,label
-J8FI7J39N7.jpg,./databases/Sampledb-222/bmw_series 3_2014/J8FI7J39N7.jpg,bmw_series 3_2014,1,9,8,11
-DTSWA4ACQ1HD34N07A8L.jpg,./databases/Sampledb-222/audi_a3_2006/DTSWA4ACQ1HD34N07A8L.jpg,audi_a3_2006,0,1,1,1
-LDP1PKW6LN.jpg,./databases/Sampledb-222/bmw_x1_2011/LDP1PKW6LN.jpg,bmw_x1_2011,1,11,7,13
-E1JU6KTFGGV6NCL53AEF.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/E1JU6KTFGGV6NCL53AEF.jpg,mercedes benz_b 180_2013,2,5,5,5
-XGYYAVG9YQ.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/XGYYAVG9YQ.jpg,mercedes benz_b 180_2013,2,5,5,5
-FDCP8MAIRD.jpg,./databases/Sampledb-222/audi_a3_2006/FDCP8MAIRD.jpg,audi_a3_2006,0,1,1,1
-M4DLLLOAUF.jpg,./databases/Sampledb-222/bmw_x1_2011/M4DLLLOAUF.jpg,bmw_x1_2011,1,11,7,13
-1BAD6HY1ZD.jpg,./databases/Sampledb-222/audi_a3_2006/1BAD6HY1ZD.jpg,audi_a3_2006,0,1,1,1
-GRSJC7ZGAH.jpg,./databases/Sampledb-222/audi_a3_2006/GRSJC7ZGAH.jpg,audi_a3_2006,0,1,1,1
-5W01HBEB7H.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/5W01HBEB7H.jpg,mercedes benz_b 180_2013,2,5,5,5
-SARFZMRPEC.jpg,./databases/Sampledb-222/bmw_x1_2011/SARFZMRPEC.jpg,bmw_x1_2011,1,11,7,13
-4WJJ8NXENCJU1ZPANQIH.jpg,./databases/Sampledb-222/audi_a3_2006/4WJJ8NXENCJU1ZPANQIH.jpg,audi_a3_2006,0,1,1,1
-PFYBSYYM1W.jpg,./databases/Sampledb-222/audi_a3_2006/PFYBSYYM1W.jpg,audi_a3_2006,0,1,1,1
-U1RTF2OMUSNJJN75NBYX.jpg,./databases/Sampledb-222/bmw_318_2010/U1RTF2OMUSNJJN75NBYX.jpg,bmw_318_2010,1,10,11,12
-OPGR9UW4A5.jpg,./databases/Sampledb-222/audi_a3_2006/OPGR9UW4A5.jpg,audi_a3_2006,0,1,1,1
-IIBZBVMSV6.jpg,./databases/Sampledb-222/audi_a3_2006/IIBZBVMSV6.jpg,audi_a3_2006,0,1,1,1
-DURKBIIPOX.jpg,./databases/Sampledb-222/audi_a3_2006/DURKBIIPOX.jpg,audi_a3_2006,0,1,1,1
-ZR8ZMDGAGS.jpg,./databases/Sampledb-222/audi_a3_2006/ZR8ZMDGAGS.jpg,audi_a3_2006,0,1,1,1
-ASSY6YE17O.jpg,./databases/Sampledb-222/audi_a3_2006/ASSY6YE17O.jpg,audi_a3_2006,0,1,1,1
-8KLR0HUE80.jpg,./databases/Sampledb-222/dacia_sandero_2015/8KLR0HUE80.jpg,dacia_sandero_2015,3,4,10,10
-WXL68LXF7D.jpg,./databases/Sampledb-222/audi_a3_2006/WXL68LXF7D.jpg,audi_a3_2006,0,1,1,1
-VKB7DA4VYB.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/VKB7DA4VYB.jpg,mercedes benz_b 180_2013,2,5,5,5
-IIQ6YXFE6F.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/IIQ6YXFE6F.jpg,mercedes benz_b 180_2013,2,5,5,5
-PFCUDE64JWLKVFGJOGZK.jpg,./databases/Sampledb-222/bmw_318_2010/PFCUDE64JWLKVFGJOGZK.jpg,bmw_318_2010,1,10,11,12
-NKE1T7ABQMS4PUS7SZSA.jpg,./databases/Sampledb-222/mercedes benz_b 180_2014/NKE1T7ABQMS4PUS7SZSA.jpg,mercedes benz_b 180_2014,2,5,8,8
-KI83EVYZI1.jpg,./databases/Sampledb-222/audi_a3_2006/KI83EVYZI1.jpg,audi_a3_2006,0,1,1,1
-P194EDZW60.jpg,./databases/Sampledb-222/bmw_x1_2011/P194EDZW60.jpg,bmw_x1_2011,1,11,7,13
-NF4WT1T1YX.jpg,./databases/Sampledb-222/audi_a3_2006/NF4WT1T1YX.jpg,audi_a3_2006,0,1,1,1
-QN2LBD72MN.jpg,./databases/Sampledb-222/bmw_x5_2019/QN2LBD72MN.jpg,bmw_x5_2019,1,2,2,2
-IXMQHKP7VPENHR3OS4NR.jpg,./databases/Sampledb-222/audi_a3_2006/IXMQHKP7VPENHR3OS4NR.jpg,audi_a3_2006,0,1,1,1
-J30SRP8DHV.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/J30SRP8DHV.jpg,mercedes benz_b 180_2013,2,5,5,5
-OUJ9U7FA6J.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/OUJ9U7FA6J.jpg,mercedes benz_b 180_2013,2,5,5,5
-0HSSXGT9NJ.jpg,./databases/Sampledb-222/audi_a3_2006/0HSSXGT9NJ.jpg,audi_a3_2006,0,1,1,1
-B9Y0MPBVCW.jpg,./databases/Sampledb-222/audi_a3_2006/B9Y0MPBVCW.jpg,audi_a3_2006,0,1,1,1
-DNPNBWR93K.jpg,./databases/Sampledb-222/audi_a3_2006/DNPNBWR93K.jpg,audi_a3_2006,0,1,1,1
-34PPBUXTHI0AAW8EDKLQ.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/34PPBUXTHI0AAW8EDKLQ.jpg,mercedes benz_b 180_2013,2,5,5,5
-Z9G6JOHSET.jpg,./databases/Sampledb-222/audi_a3_2006/Z9G6JOHSET.jpg,audi_a3_2006,0,1,1,1
-38XJO2JHGW.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/38XJO2JHGW.jpg,mercedes benz_b 180_2013,2,5,5,5
-ZBFZZQ17D9.jpg,./databases/Sampledb-222/audi_a3_2006/ZBFZZQ17D9.jpg,audi_a3_2006,0,1,1,1
-DFHZVZ3L9URQI60OTC29.jpg,./databases/Sampledb-222/audi_a3_2006/DFHZVZ3L9URQI60OTC29.jpg,audi_a3_2006,0,1,1,1
-RBN76WCZJS.jpg,./databases/Sampledb-222/bmw_x1_2011/RBN76WCZJS.jpg,bmw_x1_2011,1,11,7,13
-JNLQ5I9YRA.jpg,./databases/Sampledb-222/dacia_sandero_2015/JNLQ5I9YRA.jpg,dacia_sandero_2015,3,4,10,10
-ZZWL2INI2KROZG1DF923.jpg,./databases/Sampledb-222/bmw_x1_2011/ZZWL2INI2KROZG1DF923.jpg,bmw_x1_2011,1,11,7,13
-TM45YYOW3X9MY459UKOM.jpg,./databases/Sampledb-222/audi_a3_2006/TM45YYOW3X9MY459UKOM.jpg,audi_a3_2006,0,1,1,1
-ZU9ON2R1XB.jpg,./databases/Sampledb-222/audi_a3_2006/ZU9ON2R1XB.jpg,audi_a3_2006,0,1,1,1
-15X87U8M1E6JQ1LHB5T6.jpg,./databases/Sampledb-222/bmw_x1_2011/15X87U8M1E6JQ1LHB5T6.jpg,bmw_x1_2011,1,11,7,13
-Y86IW4M824ICPXC0E6ON.jpg,./databases/Sampledb-222/bmw_x1_2011/Y86IW4M824ICPXC0E6ON.jpg,bmw_x1_2011,1,11,7,13
-9GAG6ARPWD49733U0LGL.jpg,./databases/Sampledb-222/audi_a3_2006/9GAG6ARPWD49733U0LGL.jpg,audi_a3_2006,0,1,1,1
-LECBM8VYJAS1FWR4O8GT.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/LECBM8VYJAS1FWR4O8GT.jpg,mercedes benz_b 180_2013,2,5,5,5
-S0LN6DLEITY6KQRR558A.jpg,./databases/Sampledb-222/audi_a3_2006/S0LN6DLEITY6KQRR558A.jpg,audi_a3_2006,0,1,1,1
-AZ773QJ6S2.jpg,./databases/Sampledb-222/bmw_series 3_2014/AZ773QJ6S2.jpg,bmw_series 3_2014,1,9,8,11
-OFNF52LQQY.jpg,./databases/Sampledb-222/audi_a3_2006/OFNF52LQQY.jpg,audi_a3_2006,0,1,1,1
-Z9BP5Y6HWM.jpg,./databases/Sampledb-222/audi_a3_2006/Z9BP5Y6HWM.jpg,audi_a3_2006,0,1,1,1
-LRZFHVR0Z9.jpg,./databases/Sampledb-222/audi_a3_2006/LRZFHVR0Z9.jpg,audi_a3_2006,0,1,1,1
-P4O5N7F5IR13IN3ZO6R8.jpg,./databases/Sampledb-222/bmw_series 3_2014/P4O5N7F5IR13IN3ZO6R8.jpg,bmw_series 3_2014,1,9,8,11
-IXCMC59K3B.jpg,./databases/Sampledb-222/bmw_x1_2011/IXCMC59K3B.jpg,bmw_x1_2011,1,11,7,13
-GBAUAJ00WE.jpg,./databases/Sampledb-222/audi_a3_2006/GBAUAJ00WE.jpg,audi_a3_2006,0,1,1,1
-4SXS0GL6EL.jpg,./databases/Sampledb-222/audi_a3_2006/4SXS0GL6EL.jpg,audi_a3_2006,0,1,1,1
-ZHQF8EI7GQ.jpg,./databases/Sampledb-222/audi_a3_2006/ZHQF8EI7GQ.jpg,audi_a3_2006,0,1,1,1
-2YOFNCDL4YQ3WZ04TYFF.jpg,./databases/Sampledb-222/audi_a3_2006/2YOFNCDL4YQ3WZ04TYFF.jpg,audi_a3_2006,0,1,1,1
-WA0TZJEK7T.jpg,./databases/Sampledb-222/audi_a3_2006/WA0TZJEK7T.jpg,audi_a3_2006,0,1,1,1
-AB0MWMFPZ8.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/AB0MWMFPZ8.jpg,mercedes benz_b 180_2013,2,5,5,5
-0NGO13Y92K.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/0NGO13Y92K.jpg,mercedes benz_b 180_2013,2,5,5,5
-H5QZENKWXX.jpg,./databases/Sampledb-222/mercedes benz_190_1993/H5QZENKWXX.jpg,mercedes benz_190_1993,2,3,3,3
-OOBOIKRIBO.jpg,./databases/Sampledb-222/bmw_series 3_2014/OOBOIKRIBO.jpg,bmw_series 3_2014,1,9,8,11
-070NISJ6DY.jpg,./databases/Sampledb-222/bmw_x1_2011/070NISJ6DY.jpg,bmw_x1_2011,1,11,7,13
-UDIA5UN9Y1.jpg,./databases/Sampledb-222/bmw_series 3_2014/UDIA5UN9Y1.jpg,bmw_series 3_2014,1,9,8,11
-9HT4OKD88YB79FLQP7N5.jpg,./databases/Sampledb-222/bmw_x1_2011/9HT4OKD88YB79FLQP7N5.jpg,bmw_x1_2011,1,11,7,13
-8A1UEPWZS9.jpg,./databases/Sampledb-222/mercedes benz_b 180_2014/8A1UEPWZS9.jpg,mercedes benz_b 180_2014,2,5,8,8
-QGFOMSIKMI.jpg,./databases/Sampledb-222/audi_a3_2006/QGFOMSIKMI.jpg,audi_a3_2006,0,1,1,1
-XLUTI63UZA.jpg,./databases/Sampledb-222/bmw_x1_2011/XLUTI63UZA.jpg,bmw_x1_2011,1,11,7,13
-DI20CXFZGNZ5Q23Z2UWP.jpg,./databases/Sampledb-222/audi_a3_2006/DI20CXFZGNZ5Q23Z2UWP.jpg,audi_a3_2006,0,1,1,1
-BVBLJU5N0X.jpg,./databases/Sampledb-222/dacia_logan_2012/BVBLJU5N0X.jpg,dacia_logan_2012,3,8,9,9
-K6T9EELOZH.jpg,./databases/Sampledb-222/audi_a3_2006/K6T9EELOZH.jpg,audi_a3_2006,0,1,1,1
-C7OUMVY9V4.jpg,./databases/Sampledb-222/bmw_series 3_2014/C7OUMVY9V4.jpg,bmw_series 3_2014,1,9,8,11
-5ZDK5GW6PSQZEVSFNA3Y.jpg,./databases/Sampledb-222/audi_a3_2006/5ZDK5GW6PSQZEVSFNA3Y.jpg,audi_a3_2006,0,1,1,1
-2I22BXXYR0.jpg,./databases/Sampledb-222/mercedes benz_b 180_2014/2I22BXXYR0.jpg,mercedes benz_b 180_2014,2,5,8,8
-K9RYOU1KRA.jpg,./databases/Sampledb-222/audi_a3_2006/K9RYOU1KRA.jpg,audi_a3_2006,0,1,1,1
-5MAI9RP4HD7D6OWALXSG.jpg,./databases/Sampledb-222/audi_a3_2006/5MAI9RP4HD7D6OWALXSG.jpg,audi_a3_2006,0,1,1,1
-U01ZCV5TT87AWNY1LFDG.jpg,./databases/Sampledb-222/audi_a3_2006/U01ZCV5TT87AWNY1LFDG.jpg,audi_a3_2006,0,1,1,1
-LB7RF7D9LL782T0URV5V.jpg,./databases/Sampledb-222/audi_a3_2006/LB7RF7D9LL782T0URV5V.jpg,audi_a3_2006,0,1,1,1
-4GPM7TOJQ6.jpg,./databases/Sampledb-222/bmw_x5_2019/4GPM7TOJQ6.jpg,bmw_x5_2019,1,2,2,2
-HVR0S5N5K9.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/HVR0S5N5K9.jpg,mercedes benz_b 180_2013,2,5,5,5
-NVCBE9GFTL.jpg,./databases/Sampledb-222/bmw_series 3_2014/NVCBE9GFTL.jpg,bmw_series 3_2014,1,9,8,11
-R4V3TJTC2M.jpg,./databases/Sampledb-222/bmw_series 3_2014/R4V3TJTC2M.jpg,bmw_series 3_2014,1,9,8,11
-PUY5HCMS6W.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/PUY5HCMS6W.jpg,mercedes benz_b 180_2013,2,5,5,5
-LBKVZT0JAE.jpg,./databases/Sampledb-222/mercedes benz_b 180_2014/LBKVZT0JAE.jpg,mercedes benz_b 180_2014,2,5,8,8
-MQFJPHU10T.jpg,./databases/Sampledb-222/bmw_x1_2011/MQFJPHU10T.jpg,bmw_x1_2011,1,11,7,13
-84RKS57SBRS8DJH0QIHC.jpg,./databases/Sampledb-222/bmw_series 3_2014/84RKS57SBRS8DJH0QIHC.jpg,bmw_series 3_2014,1,9,8,11
-Z8G9HSQETGP2MX71DVB8.jpg,./databases/Sampledb-222/bmw_x1_2011/Z8G9HSQETGP2MX71DVB8.jpg,bmw_x1_2011,1,11,7,13
-9HEZH10O4H.jpg,./databases/Sampledb-222/bmw_x1_2011/9HEZH10O4H.jpg,bmw_x1_2011,1,11,7,13
-ERT6NT499H.jpg,./databases/Sampledb-222/audi_a3_2006/ERT6NT499H.jpg,audi_a3_2006,0,1,1,1
-8Z5E3INN4Y.jpg,./databases/Sampledb-222/audi_a3_2006/8Z5E3INN4Y.jpg,audi_a3_2006,0,1,1,1
-D8IL7T71A9.jpg,./databases/Sampledb-222/bmw_series 3_2014/D8IL7T71A9.jpg,bmw_series 3_2014,1,9,8,11
-P9BHVHDNRY.jpg,./databases/Sampledb-222/audi_a3_2006/P9BHVHDNRY.jpg,audi_a3_2006,0,1,1,1
-8PSHCQSVOK.jpg,./databases/Sampledb-222/audi_a3_2006/8PSHCQSVOK.jpg,audi_a3_2006,0,1,1,1
-8961O8766GXZX9ERT4C3.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/8961O8766GXZX9ERT4C3.jpg,mercedes benz_b 180_2013,2,5,5,5
-7U77CV2RWX.jpg,./databases/Sampledb-222/audi_a3_2006/7U77CV2RWX.jpg,audi_a3_2006,0,1,1,1
-JWSMWB4I6Z.jpg,./databases/Sampledb-222/audi_a3_2006/JWSMWB4I6Z.jpg,audi_a3_2006,0,1,1,1
-JL0RPV89CB.jpg,./databases/Sampledb-222/bmw_x1_2011/JL0RPV89CB.jpg,bmw_x1_2011,1,11,7,13
-WIX8I8T8N1.jpg,./databases/Sampledb-222/audi_a3_2006/WIX8I8T8N1.jpg,audi_a3_2006,0,1,1,1
-R37VTTXF15.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/R37VTTXF15.jpg,mercedes benz_b 180_2013,2,5,5,5
-UOVA1DLZL6.jpg,./databases/Sampledb-222/audi_a2_2001/UOVA1DLZL6.jpg,audi_a2_2001,0,0,0,0
-VFXHJ7OOPH.jpg,./databases/Sampledb-222/mercedes benz_190_1993/VFXHJ7OOPH.jpg,mercedes benz_190_1993,2,3,3,3
-901UH7ODLM.jpg,./databases/Sampledb-222/bmw_x1_2011/901UH7ODLM.jpg,bmw_x1_2011,1,11,7,13
-WYCOWHISE8.jpg,./databases/Sampledb-222/audi_a3_2006/WYCOWHISE8.jpg,audi_a3_2006,0,1,1,1
-5HQ1R7PYS5.jpg,./databases/Sampledb-222/audi_a3_2006/5HQ1R7PYS5.jpg,audi_a3_2006,0,1,1,1
-2MYUUA4MZM.jpg,./databases/Sampledb-222/bmw_x1_2011/2MYUUA4MZM.jpg,bmw_x1_2011,1,11,7,13
-5C98KW03HN9ACJ3P1TK3.jpg,./databases/Sampledb-222/audi_a3_2006/5C98KW03HN9ACJ3P1TK3.jpg,audi_a3_2006,0,1,1,1
-HPFAQ94XHU.jpg,./databases/Sampledb-222/bmw_x1_2011/HPFAQ94XHU.jpg,bmw_x1_2011,1,11,7,13
-U9X0ZJZO33.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/U9X0ZJZO33.jpg,mercedes benz_b 180_2013,2,5,5,5
-5H2F91XH97.jpg,./databases/Sampledb-222/bmw_x1_2011/5H2F91XH97.jpg,bmw_x1_2011,1,11,7,13
-HUTDMY2N2Y.jpg,./databases/Sampledb-222/mercedes benz_190_1993/HUTDMY2N2Y.jpg,mercedes benz_190_1993,2,3,3,3
-KSOOV4JAJH.jpg,./databases/Sampledb-222/audi_a3_2006/KSOOV4JAJH.jpg,audi_a3_2006,0,1,1,1
-QSI06UTV6V3132ZHOOZZ.jpg,./databases/Sampledb-222/audi_a3_2006/QSI06UTV6V3132ZHOOZZ.jpg,audi_a3_2006,0,1,1,1
-PMOHVBXEPN.jpg,./databases/Sampledb-222/bmw_318_2010/PMOHVBXEPN.jpg,bmw_318_2010,1,10,11,12
-1AG6JGH6VE.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/1AG6JGH6VE.jpg,mercedes benz_b 180_2013,2,5,5,5
-K86AKHS3HT.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/K86AKHS3HT.jpg,mercedes benz_b 180_2013,2,5,5,5
-3XXH7ZLPRU.jpg,./databases/Sampledb-222/audi_a3_2006/3XXH7ZLPRU.jpg,audi_a3_2006,0,1,1,1
-JEZJXBI3TH.jpg,./databases/Sampledb-222/mercedes benz_190_1993/JEZJXBI3TH.jpg,mercedes benz_190_1993,2,3,3,3
-714LFD4JIU6IPTIGEX7H.jpg,./databases/Sampledb-222/bmw_series 3_2014/714LFD4JIU6IPTIGEX7H.jpg,bmw_series 3_2014,1,9,8,11
-ZV74STQ8TW.jpg,./databases/Sampledb-222/audi_a3_2006/ZV74STQ8TW.jpg,audi_a3_2006,0,1,1,1
-6OZ9US5Y3S.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/6OZ9US5Y3S.jpg,mercedes benz_b 180_2013,2,5,5,5
-RYCU300KKN.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/RYCU300KKN.jpg,mercedes benz_b 180_2013,2,5,5,5
-290HMBVZDK.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/290HMBVZDK.jpg,mercedes benz_b 180_2013,2,5,5,5
-TSZ6ED7SVS.jpg,./databases/Sampledb-222/audi_a3_2006/TSZ6ED7SVS.jpg,audi_a3_2006,0,1,1,1
-H63ONHZ3W37WG8RE8GQC.jpg,./databases/Sampledb-222/audi_a3_2006/H63ONHZ3W37WG8RE8GQC.jpg,audi_a3_2006,0,1,1,1
-U0488E9AAD.jpg,./databases/Sampledb-222/audi_a3_2006/U0488E9AAD.jpg,audi_a3_2006,0,1,1,1
-QYYHMP8VNE.jpg,./databases/Sampledb-222/mercedes benz_b 180_2014/QYYHMP8VNE.jpg,mercedes benz_b 180_2014,2,5,8,8
-4FEG4NGDDK.jpg,./databases/Sampledb-222/audi_a3_2006/4FEG4NGDDK.jpg,audi_a3_2006,0,1,1,1
-V2N7UBHUNL7QOGDFKFZW.jpg,./databases/Sampledb-222/mercedes benz_b 180_2014/V2N7UBHUNL7QOGDFKFZW.jpg,mercedes benz_b 180_2014,2,5,8,8
-7Y1NYMC3BE.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/7Y1NYMC3BE.jpg,mercedes benz_b 180_2013,2,5,5,5
-KA1MC2PPK5.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/KA1MC2PPK5.jpg,mercedes benz_b 180_2013,2,5,5,5
-1K32VRBTQR.jpg,./databases/Sampledb-222/audi_a3_2006/1K32VRBTQR.jpg,audi_a3_2006,0,1,1,1
-743B2MKWBIXKIMI80AWF.jpg,./databases/Sampledb-222/audi_a3_2006/743B2MKWBIXKIMI80AWF.jpg,audi_a3_2006,0,1,1,1
-RA2GH5M3AU.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/RA2GH5M3AU.jpg,mercedes benz_b 180_2013,2,5,5,5
-UFXEWKDAB7.jpg,./databases/Sampledb-222/bmw_x5_2019/UFXEWKDAB7.jpg,bmw_x5_2019,1,2,2,2
-2NRMAPVP7B.jpg,./databases/Sampledb-222/bmw_x1_2011/2NRMAPVP7B.jpg,bmw_x1_2011,1,11,7,13
-LTWJ3AAM5B.jpg,./databases/Sampledb-222/bmw_series 3_2014/LTWJ3AAM5B.jpg,bmw_series 3_2014,1,9,8,11
-VO4EI8EU5H5MMQJV0GFU.jpg,./databases/Sampledb-222/audi_a3_2006/VO4EI8EU5H5MMQJV0GFU.jpg,audi_a3_2006,0,1,1,1
-Y5RVOATEZD.jpg,./databases/Sampledb-222/bmw_x1_2011/Y5RVOATEZD.jpg,bmw_x1_2011,1,11,7,13
-8I3EU6LLGK.jpg,./databases/Sampledb-222/bmw_series 3_2014/8I3EU6LLGK.jpg,bmw_series 3_2014,1,9,8,11
-C35Z2ZTG9D83H5W8U10O.jpg,./databases/Sampledb-222/dacia_logan_2012/C35Z2ZTG9D83H5W8U10O.jpg,dacia_logan_2012,3,8,9,9
-PE9U3JBC7G.jpg,./databases/Sampledb-222/dacia_sandero_2008/PE9U3JBC7G.jpg,dacia_sandero_2008,3,4,4,4
-M7STDYIP1L.jpg,./databases/Sampledb-222/audi_a3_2006/M7STDYIP1L.jpg,audi_a3_2006,0,1,1,1
-AIGFFTFSHX.jpg,./databases/Sampledb-222/mercedes benz_200_2016/AIGFFTFSHX.jpg,mercedes benz_200_2016,2,12,12,14
-V4V6ET3LOU.jpg,./databases/Sampledb-222/bmw_x1_2011/V4V6ET3LOU.jpg,bmw_x1_2011,1,11,7,13
-1LQRYTKZC8.jpg,./databases/Sampledb-222/bmw_series 3_2014/1LQRYTKZC8.jpg,bmw_series 3_2014,1,9,8,11
-8Y768VMIAB.jpg,./databases/Sampledb-222/audi_a3_2006/8Y768VMIAB.jpg,audi_a3_2006,0,1,1,1
-K6BNEOWAA4.jpg,./databases/Sampledb-222/mercedes benz_b 180_2014/K6BNEOWAA4.jpg,mercedes benz_b 180_2014,2,5,8,8
-MWOP3SYJ7X.jpg,./databases/Sampledb-222/audi_a3_2006/MWOP3SYJ7X.jpg,audi_a3_2006,0,1,1,1
-X25M8HI9TQ.jpg,./databases/Sampledb-222/bmw_series 3_2014/X25M8HI9TQ.jpg,bmw_series 3_2014,1,9,8,11
-4TZWLNJI2PWLBHVCQD2F.jpg,./databases/Sampledb-222/audi_a3_2006/4TZWLNJI2PWLBHVCQD2F.jpg,audi_a3_2006,0,1,1,1
-R7RUR2NRCVVA09N72NSN.jpg,./databases/Sampledb-222/audi_a3_2006/R7RUR2NRCVVA09N72NSN.jpg,audi_a3_2006,0,1,1,1
-3AY4TDW4AIIYKHPWWWKX.jpg,./databases/Sampledb-222/audi_a3_2006/3AY4TDW4AIIYKHPWWWKX.jpg,audi_a3_2006,0,1,1,1
-QQPGJSUQXEFP5U2YVI7L.jpg,./databases/Sampledb-222/audi_a3_2006/QQPGJSUQXEFP5U2YVI7L.jpg,audi_a3_2006,0,1,1,1
-4KPIO186NN1U02OAR2U2.jpg,./databases/Sampledb-222/audi_a3_2006/4KPIO186NN1U02OAR2U2.jpg,audi_a3_2006,0,1,1,1
-6SVCD7KGYJ.jpg,./databases/Sampledb-222/audi_a3_2006/6SVCD7KGYJ.jpg,audi_a3_2006,0,1,1,1
-EVA0E5HB5T.jpg,./databases/Sampledb-222/mercedes benz_190_1993/EVA0E5HB5T.jpg,mercedes benz_190_1993,2,3,3,3
-AT6NQHBZ1U.jpg,./databases/Sampledb-222/audi_a3_2006/AT6NQHBZ1U.jpg,audi_a3_2006,0,1,1,1
-KA7PR3094O.jpg,./databases/Sampledb-222/bmw_x1_2011/KA7PR3094O.jpg,bmw_x1_2011,1,11,7,13
-PLOI1V87JC.jpg,./databases/Sampledb-222/bmw_x1_2011/PLOI1V87JC.jpg,bmw_x1_2011,1,11,7,13
-GMVCBDQ5SH.jpg,./databases/Sampledb-222/bmw_x1_2011/GMVCBDQ5SH.jpg,bmw_x1_2011,1,11,7,13
-J2J04GS7GC.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/J2J04GS7GC.jpg,mercedes benz_b 180_2013,2,5,5,5
-E7Z3S5ZA5U.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/E7Z3S5ZA5U.jpg,mercedes benz_b 180_2013,2,5,5,5
-W5JW8OPAAR.jpg,./databases/Sampledb-222/audi_a3_2006/W5JW8OPAAR.jpg,audi_a3_2006,0,1,1,1
-QT8SUUMMY5.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/QT8SUUMMY5.jpg,mercedes benz_b 180_2013,2,5,5,5
-HX40PCJ6MF475P4NBV2C.jpg,./databases/Sampledb-222/audi_a3_2006/HX40PCJ6MF475P4NBV2C.jpg,audi_a3_2006,0,1,1,1
-TRTCHJU518WYJ23108ES.jpg,./databases/Sampledb-222/bmw_x1_2011/TRTCHJU518WYJ23108ES.jpg,bmw_x1_2011,1,11,7,13
-NMH6PFF5LLFCFBJVZAQ4.jpg,./databases/Sampledb-222/audi_a3_2006/NMH6PFF5LLFCFBJVZAQ4.jpg,audi_a3_2006,0,1,1,1
-O081K5LPOQ.jpg,./databases/Sampledb-222/dacia_logan_2012/O081K5LPOQ.jpg,dacia_logan_2012,3,8,9,9
-0CHAOUK6QB.jpg,./databases/Sampledb-222/audi_a3_2006/0CHAOUK6QB.jpg,audi_a3_2006,0,1,1,1
-STODM5C6Y0.jpg,./databases/Sampledb-222/audi_a3_2006/STODM5C6Y0.jpg,audi_a3_2006,0,1,1,1
-TZHZTC6C4194KRSBFG1Y.jpg,./databases/Sampledb-222/bmw_series 3_2014/TZHZTC6C4194KRSBFG1Y.jpg,bmw_series 3_2014,1,9,8,11
-SEF4F8VOPR.jpg,./databases/Sampledb-222/bmw_x1_2011/SEF4F8VOPR.jpg,bmw_x1_2011,1,11,7,13
-R3U0UW01UX.jpg,./databases/Sampledb-222/audi_a3_2006/R3U0UW01UX.jpg,audi_a3_2006,0,1,1,1
-AONC4AM6DV.jpg,./databases/Sampledb-222/audi_a3_2006/AONC4AM6DV.jpg,audi_a3_2006,0,1,1,1
-YD5RZW9A7R.jpg,./databases/Sampledb-222/bmw_318_2010/YD5RZW9A7R.jpg,bmw_318_2010,1,10,11,12
-NCQJUDV8NI.jpg,./databases/Sampledb-222/bmw_series 3_2014/NCQJUDV8NI.jpg,bmw_series 3_2014,1,9,8,11
-BNOIZJTQQU.jpg,./databases/Sampledb-222/audi_a3_2006/BNOIZJTQQU.jpg,audi_a3_2006,0,1,1,1
-8HTJW7I0RT.jpg,./databases/Sampledb-222/audi_a3_2006/8HTJW7I0RT.jpg,audi_a3_2006,0,1,1,1
-BE94NOD9LD10ZEJ6DMMI.jpg,./databases/Sampledb-222/bmw_x1_2011/BE94NOD9LD10ZEJ6DMMI.jpg,bmw_x1_2011,1,11,7,13
-NFMRF18XAG.jpg,./databases/Sampledb-222/bmw_x1_2011/NFMRF18XAG.jpg,bmw_x1_2011,1,11,7,13
-O6FBA5JNUETHROC03EG5.jpg,./databases/Sampledb-222/audi_a3_2006/O6FBA5JNUETHROC03EG5.jpg,audi_a3_2006,0,1,1,1
-5LQMT4Z6QV7FIJVCLE0R.jpg,./databases/Sampledb-222/mercedes benz_b 180_2014/5LQMT4Z6QV7FIJVCLE0R.jpg,mercedes benz_b 180_2014,2,5,8,8
-MP13QFYOHR.jpg,./databases/Sampledb-222/bmw_x1_2011/MP13QFYOHR.jpg,bmw_x1_2011,1,11,7,13
-ONB661NS3W.jpg,./databases/Sampledb-222/dacia_sandero_2008/ONB661NS3W.jpg,dacia_sandero_2008,3,4,4,4
-2Q5HGFGE3K.jpg,./databases/Sampledb-222/audi_a2_2001/2Q5HGFGE3K.jpg,audi_a2_2001,0,0,0,0
-KO8SFFD0GFEHBEJPTWOV.jpg,./databases/Sampledb-222/audi_a3_2006/KO8SFFD0GFEHBEJPTWOV.jpg,audi_a3_2006,0,1,1,1
-0PVF6X58CM.jpg,./databases/Sampledb-222/audi_a3_2006/0PVF6X58CM.jpg,audi_a3_2006,0,1,1,1
-SPEQ47A2X4.jpg,./databases/Sampledb-222/audi_a3_2006/SPEQ47A2X4.jpg,audi_a3_2006,0,1,1,1
-2IF8X33B9C.jpg,./databases/Sampledb-222/audi_a3_2006/2IF8X33B9C.jpg,audi_a3_2006,0,1,1,1
-CCNSNXX05Q.jpg,./databases/Sampledb-222/mercedes benz_b 180_2014/CCNSNXX05Q.jpg,mercedes benz_b 180_2014,2,5,8,8
-K6C8NDXOH8VNQMHAJBMS.jpg,./databases/Sampledb-222/audi_a3_2006/K6C8NDXOH8VNQMHAJBMS.jpg,audi_a3_2006,0,1,1,1
-RDCNZQZU7LHT276XTVHQ.jpg,./databases/Sampledb-222/audi_a3_2006/RDCNZQZU7LHT276XTVHQ.jpg,audi_a3_2006,0,1,1,1
-0HQB6F4QE7.jpg,./databases/Sampledb-222/audi_a3_2006/0HQB6F4QE7.jpg,audi_a3_2006,0,1,1,1
-9K75V9P3C8.jpg,./databases/Sampledb-222/bmw_series 3_2014/9K75V9P3C8.jpg,bmw_series 3_2014,1,9,8,11
-LRNZ5IPR7Z.jpg,./databases/Sampledb-222/bmw_series 3_2014/LRNZ5IPR7Z.jpg,bmw_series 3_2014,1,9,8,11
-HV2J645OHQ.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/HV2J645OHQ.jpg,mercedes benz_b 180_2013,2,5,5,5
-5UQ8UIKWMXGUHUWCWQCM.jpg,./databases/Sampledb-222/bmw_318_2010/5UQ8UIKWMXGUHUWCWQCM.jpg,bmw_318_2010,1,10,11,12
-0X4O8Y6B49.jpg,./databases/Sampledb-222/audi_a3_2006/0X4O8Y6B49.jpg,audi_a3_2006,0,1,1,1
-I8MG9NIKFN.jpg,./databases/Sampledb-222/bmw_series 3_2014/I8MG9NIKFN.jpg,bmw_series 3_2014,1,9,8,11
-7ILJHI6NAQ76745IVKDX.jpg,./databases/Sampledb-222/audi_a3_2006/7ILJHI6NAQ76745IVKDX.jpg,audi_a3_2006,0,1,1,1
-EHO0QNEFEI.jpg,./databases/Sampledb-222/bmw_x1_2011/EHO0QNEFEI.jpg,bmw_x1_2011,1,11,7,13
-PDR7TOBJGT.jpg,./databases/Sampledb-222/bmw_x1_2011/PDR7TOBJGT.jpg,bmw_x1_2011,1,11,7,13
-6AJD6DFN0N.jpg,./databases/Sampledb-222/mercedes benz_b 180_2013/6AJD6DFN0N.jpg,mercedes benz_b 180_2013,2,5,5,5
-K4FYCPS4RT.jpg,./databases/Sampledb-222/mercedes benz_190_1993/K4FYCPS4RT.jpg,mercedes benz_190_1993,2,3,3,3
-PUNCI1LFRD.jpg,./databases/Sampledb-222/audi_a3_2006/PUNCI1LFRD.jpg,audi_a3_2006,0,1,1,1
-N0JUHZF1OD.jpg,./databases/Sampledb-222/bmw_x1_2011/N0JUHZF1OD.jpg,bmw_x1_2011,1,11,7,13
-HZCLYBKTKP.jpg,./databases/Sampledb-222/bmw_x1_2011/HZCLYBKTKP.jpg,bmw_x1_2011,1,11,7,13
+FC2WGMKD0A9S4QEKJHQA.jpg,./databases/Sampledb/mercedes benz_b 180_2013/FC2WGMKD0A9S4QEKJHQA.jpg,mercedes benz_b 180_2013,2,5,5,5
+HTI9KWLXGM0B1XBKCFBT.jpg,./databases/Sampledb/audi_a3_2006/HTI9KWLXGM0B1XBKCFBT.jpg,audi_a3_2006,0,1,1,1
+M9CMO9J5QEZOEXBH23Z4.jpg,./databases/Sampledb/mercedes benz_190_1993/M9CMO9J5QEZOEXBH23Z4.jpg,mercedes benz_190_1993,2,3,3,3
+9GAG6ARPWD49733U0LGL.jpg,./databases/Sampledb/audi_a3_2006/9GAG6ARPWD49733U0LGL.jpg,audi_a3_2006,0,1,1,1
+JY541Y7L5I72KRTKKCAX.jpg,./databases/Sampledb/dacia_sandero_2008/JY541Y7L5I72KRTKKCAX.jpg,dacia_sandero_2008,3,4,4,4
+7SL5C6II6XUT51LP9UQ9.jpg,./databases/Sampledb/bmw_series 3_2014/7SL5C6II6XUT51LP9UQ9.jpg,bmw_series 3_2014,1,9,8,11
+GLTM3L1A4K4KA6YBTDCQ.jpg,./databases/Sampledb/mercedes benz_190_1993/GLTM3L1A4K4KA6YBTDCQ.jpg,mercedes benz_190_1993,2,3,3,3
+OXY50S9V71KQ5PA5FNPY.jpg,./databases/Sampledb/audi_a3_2006/OXY50S9V71KQ5PA5FNPY.jpg,audi_a3_2006,0,1,1,1
+PDT6BKWJ5N6SU5F31OER.jpg,./databases/Sampledb/audi_a3_2006/PDT6BKWJ5N6SU5F31OER.jpg,audi_a3_2006,0,1,1,1
+ILALVURU2BRIB6UT6Y4V.jpg,./databases/Sampledb/audi_a3_2006/ILALVURU2BRIB6UT6Y4V.jpg,audi_a3_2006,0,1,1,1
+HX40PCJ6MF475P4NBV2C.jpg,./databases/Sampledb/audi_a3_2006/HX40PCJ6MF475P4NBV2C.jpg,audi_a3_2006,0,1,1,1
+8ZAC7EMHZWP4ICSMEBN2.jpg,./databases/Sampledb/bmw_x1_2011/8ZAC7EMHZWP4ICSMEBN2.jpg,bmw_x1_2011,1,11,7,13
+U73GIZM06Q8ILR3UF20H.jpg,./databases/Sampledb/mercedes benz_b 180_2013/U73GIZM06Q8ILR3UF20H.jpg,mercedes benz_b 180_2013,2,5,5,5
+F4BL0FHHO4RXFDGC1VHQ.jpg,./databases/Sampledb/bmw_series 3_2014/F4BL0FHHO4RXFDGC1VHQ.jpg,bmw_series 3_2014,1,9,8,11
+L0N7TOMDL4GKIP1XUT37.jpg,./databases/Sampledb/bmw_318_2010/L0N7TOMDL4GKIP1XUT37.jpg,bmw_318_2010,1,10,11,12
+I2ES70N4XDI0X18WE64B.jpg,./databases/Sampledb/bmw_318_2010/I2ES70N4XDI0X18WE64B.jpg,bmw_318_2010,1,10,11,12
+64JZ7AFFJ8S505XDX1AP.jpg,./databases/Sampledb/audi_a3_2006/64JZ7AFFJ8S505XDX1AP.jpg,audi_a3_2006,0,1,1,1
+HVI7LIMSU71GZYFOXXFX.jpg,./databases/Sampledb/audi_a3_2006/HVI7LIMSU71GZYFOXXFX.jpg,audi_a3_2006,0,1,1,1
+0QGO9W42MANJH0D6T24X.jpg,./databases/Sampledb/bmw_318_2010/0QGO9W42MANJH0D6T24X.jpg,bmw_318_2010,1,10,11,12
+Y0LKWFY2NO1SFH91EKR1.jpg,./databases/Sampledb/audi_a3_2006/Y0LKWFY2NO1SFH91EKR1.jpg,audi_a3_2006,0,1,1,1
+BA4N8KWZRU2QGNTVME5R.jpg,./databases/Sampledb/bmw_series 3_2014/BA4N8KWZRU2QGNTVME5R.jpg,bmw_series 3_2014,1,9,8,11
+2KXZDPKW54C0WU6UOK0A.jpg,./databases/Sampledb/audi_a3_2006/2KXZDPKW54C0WU6UOK0A.jpg,audi_a3_2006,0,1,1,1
+JBZTFJ1DNF61T2EH2T0B.jpg,./databases/Sampledb/audi_a3_2006/JBZTFJ1DNF61T2EH2T0B.jpg,audi_a3_2006,0,1,1,1
+5OGY9XLE07RZ3IKC5KCP.jpg,./databases/Sampledb/dacia_logan_2012/5OGY9XLE07RZ3IKC5KCP.jpg,dacia_logan_2012,3,8,9,9
+9RYZUXJUL796131GLSU4.jpg,./databases/Sampledb/audi_a3_2006/9RYZUXJUL796131GLSU4.jpg,audi_a3_2006,0,1,1,1
+R6VR9Q7OEOFW4PY7E01J.jpg,./databases/Sampledb/audi_a3_2006/R6VR9Q7OEOFW4PY7E01J.jpg,audi_a3_2006,0,1,1,1
+TK1SE97GYB1ZLWWSU0XA.jpg,./databases/Sampledb/dacia_sandero_2015/TK1SE97GYB1ZLWWSU0XA.jpg,dacia_sandero_2015,3,4,10,10
+RT5AZ82CB75S4X1Y3L0M.jpg,./databases/Sampledb/mercedes benz_b 180_2013/RT5AZ82CB75S4X1Y3L0M.jpg,mercedes benz_b 180_2013,2,5,5,5
+NCQCE6OUL3N0QF71NFH8.jpg,./databases/Sampledb/bmw_x1_2011/NCQCE6OUL3N0QF71NFH8.jpg,bmw_x1_2011,1,11,7,13
+R3DWY1WC72O0DWPJD2CU.jpg,./databases/Sampledb/bmw_series 3_2014/R3DWY1WC72O0DWPJD2CU.jpg,bmw_series 3_2014,1,9,8,11
+9NPBGF4AS9X2BVPOC5UD.jpg,./databases/Sampledb/mercedes benz_b 180_2013/9NPBGF4AS9X2BVPOC5UD.jpg,mercedes benz_b 180_2013,2,5,5,5
+VPQDQYZXJ9BQHIFJ6DBP.jpg,./databases/Sampledb/bmw_x1_2011/VPQDQYZXJ9BQHIFJ6DBP.jpg,bmw_x1_2011,1,11,7,13
+9OEFLDHCX0SLZR2EZN6I.jpg,./databases/Sampledb/audi_a3_2006/9OEFLDHCX0SLZR2EZN6I.jpg,audi_a3_2006,0,1,1,1
+QBLV6O4TSD5NKZUXJIOI.jpg,./databases/Sampledb/audi_a3_2006/QBLV6O4TSD5NKZUXJIOI.jpg,audi_a3_2006,0,1,1,1
+7HH6D3UKBJWRYC7YFQQG.jpg,./databases/Sampledb/mercedes benz_190_1993/7HH6D3UKBJWRYC7YFQQG.jpg,mercedes benz_190_1993,2,3,3,3
+6L3PPDH664PW6T8IVFQO.jpg,./databases/Sampledb/audi_a3_2006/6L3PPDH664PW6T8IVFQO.jpg,audi_a3_2006,0,1,1,1
+3Z2I1Y5RIF6R5J08Q0XO.jpg,./databases/Sampledb/mercedes benz_b 180_2013/3Z2I1Y5RIF6R5J08Q0XO.jpg,mercedes benz_b 180_2013,2,5,5,5
+GSWPQ5GM5UAMXDY66NU3.jpg,./databases/Sampledb/mercedes benz_b 180_2014/GSWPQ5GM5UAMXDY66NU3.jpg,mercedes benz_b 180_2014,2,5,8,8
+1987TF11Z5ZYZ80E8K2F.jpg,./databases/Sampledb/mercedes benz_b 180_2013/1987TF11Z5ZYZ80E8K2F.jpg,mercedes benz_b 180_2013,2,5,5,5
+1MTG13WPU2PK5A74YTTT.jpg,./databases/Sampledb/audi_a3_2006/1MTG13WPU2PK5A74YTTT.jpg,audi_a3_2006,0,1,1,1
+RB0C6IIQQHNM9I3AYI5L.jpg,./databases/Sampledb/audi_a3_2006/RB0C6IIQQHNM9I3AYI5L.jpg,audi_a3_2006,0,1,1,1
+MCTI8BC9WTELV6ZBTGX6.jpg,./databases/Sampledb/bmw_x1_2011/MCTI8BC9WTELV6ZBTGX6.jpg,bmw_x1_2011,1,11,7,13
+867919CHUK9TZO6XCS62.jpg,./databases/Sampledb/audi_a3_2006/867919CHUK9TZO6XCS62.jpg,audi_a3_2006,0,1,1,1
+6X4CEELMDRDN52CV7UQJ.jpg,./databases/Sampledb/audi_a2_2001/6X4CEELMDRDN52CV7UQJ.jpg,audi_a2_2001,0,0,0,0
+4RHS5GTJRUHLGVVBDGOG.jpg,./databases/Sampledb/mercedes benz_b 180_2014/4RHS5GTJRUHLGVVBDGOG.jpg,mercedes benz_b 180_2014,2,5,8,8
+03BMTZ5UBG6EW28V60JO.jpg,./databases/Sampledb/mercedes benz_b 180_2013/03BMTZ5UBG6EW28V60JO.jpg,mercedes benz_b 180_2013,2,5,5,5
+8TKPHMVQMAT26VYG1IYQ.jpg,./databases/Sampledb/mercedes benz_b 180_2013/8TKPHMVQMAT26VYG1IYQ.jpg,mercedes benz_b 180_2013,2,5,5,5
+W0GPP0XZSV6A8U0Y5IUG.jpg,./databases/Sampledb/bmw_series 3_2014/W0GPP0XZSV6A8U0Y5IUG.jpg,bmw_series 3_2014,1,9,8,11
+BLZGEO1HMTZVKAY5JX1J.jpg,./databases/Sampledb/bmw_series 3_2014/BLZGEO1HMTZVKAY5JX1J.jpg,bmw_series 3_2014,1,9,8,11
+TZHZTC6C4194KRSBFG1Y.jpg,./databases/Sampledb/bmw_series 3_2014/TZHZTC6C4194KRSBFG1Y.jpg,bmw_series 3_2014,1,9,8,11
+3RMAL0T39Z0B3Y8ECMVP.jpg,./databases/Sampledb/mercedes benz_190_1993/3RMAL0T39Z0B3Y8ECMVP.jpg,mercedes benz_190_1993,2,3,3,3
+IG17BNC2SU37V92RVV9G.jpg,./databases/Sampledb/audi_a3_2006/IG17BNC2SU37V92RVV9G.jpg,audi_a3_2006,0,1,1,1
+Q2JKGQ6OCQD1NTH3UB0Y.jpg,./databases/Sampledb/dacia_sandero_2015/Q2JKGQ6OCQD1NTH3UB0Y.jpg,dacia_sandero_2015,3,4,10,10

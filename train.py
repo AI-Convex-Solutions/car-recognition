@@ -163,7 +163,8 @@ def train_model(
                 f"Phase {phase} Loss: {epoch_loss:.4f}, Acc: {epoch_acc}")
 
             # deep copy the model
-            if phase == "val" and np.mean(list(epoch_acc.values())) > np.mean(list(best_accuracy.values())):
+            if phase == "val" and np.mean(list(epoch_acc.values())) > np.mean(
+                    list(best_accuracy.values())):
                 best_accuracy = epoch_acc
                 best_model_weights = copy.deepcopy(model.state_dict())
 
@@ -176,7 +177,8 @@ def train_model(
                 )
 
     time_elapsed = time.time() - since
-    logging.info(f"Training complete in {time_elapsed // 60:.0f}, {time_elapsed % 60:.0f}s")
+    logging.info(
+        f"Training complete in {time_elapsed // 60:.0f}, {time_elapsed % 60:.0f}s")
     logging.info(f"Best val accuracy: {best_accuracy}")
 
     model.load_state_dict(best_model_weights)

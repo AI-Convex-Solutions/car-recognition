@@ -1,5 +1,7 @@
 import argparse
 import logging
+import json
+import pickle
 from pathlib import Path
 
 import numpy as np
@@ -12,7 +14,6 @@ from dataset_preprocessing import CustomDataset, DatasetPreprocessing
 from test import test_model
 from train import train_model, Classifier
 from utils import clear_memory
-
 
 Path(config.IMAGE_PATHS).mkdir(parents=True, exist_ok=True)
 Path(config.CHECKPOINT_PATH).mkdir(parents=True, exist_ok=True)
@@ -38,11 +39,13 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 torch.cuda.empty_cache()
 
 parser = argparse.ArgumentParser(description="Car Recognition")
-parser.add_argument("-p", "--preprocess", action="store_true", help="Make dataset ready for training.")
-parser.add_argument("-t", "--train", action="store_true", help="Train the model with config.py")
-parser.add_argument("-e", "--evaluate", action="store_true", help="Test the trained model.")
+parser.add_argument("-p", "--preprocess", action="store_true",
+                    help="Make dataset ready for training.")
+parser.add_argument("-t", "--train", action="store_true",
+                    help="Train the model with config.py")
+parser.add_argument("-e", "--evaluate", action="store_true",
+                    help="Test the trained model.")
 args = parser.parse_args()
-
 
 # Clean the data for the first time.
 if args.preprocess:
@@ -52,14 +55,12 @@ if args.preprocess:
     )
     preprocessor.remove_missing_data(augmentation=config.PERFORM_AUGMENTATION)
     preprocessor.build_csv_from_dataset()
+    preprocessor.count_classes_mean_and_std()
     clear_memory(preprocessor)
 
-processor = DatasetPreprocessing(
-    database_path=config.DATASET_PATH,
-    csv_path=config.TRAIN_CSV_FILE_PATH,
-)
-num_classes, mean, std = processor.count_classes_mean_and_std()
-clear_memory(processor)
+with open(config.STATS_TRAIN_FILE_PATH, "rb") as file:
+    stats = pickle.load(file)
+    num_classes, mean, std = stats["num_classes"], stats["mean"], stats["std"]
 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
@@ -142,4 +143,3 @@ if args.evaluate:
         shuffle=True
     )
     test_model(test_data, test_loader, num_classes)
-

@@ -1,7 +1,11 @@
-import os
-import shutil
 import json
 import logging
+import os
+import random
+import shutil
+import string
+import pickle
+from multiprocessing.pool import ThreadPool
 
 import pandas as pd
 import torch
@@ -9,7 +13,7 @@ from PIL import Image
 from sklearn.model_selection import train_test_split
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
-from multiprocessing.pool import ThreadPool
+from torchvision.utils import save_image
 
 import config
 
@@ -30,7 +34,8 @@ class CustomDataset(Dataset):
             idx = idx.tolist()
 
         # image_name = self.cars_frame.loc[idx, "image_name"]
-        image = Image.open(self.cars_frame.loc[idx, "image_path"]).convert('RGB')
+        image = Image.open(self.cars_frame.loc[idx, "image_path"]).convert(
+            'RGB')
         label = self.cars_frame.loc[idx, "label"]
         manufacturer = self.cars_frame.loc[idx, "manufacturer"]
         car_model = self.cars_frame.loc[idx, "car_model"]
@@ -63,7 +68,7 @@ class DatasetPreprocessing:
         self.dataloader = DataLoader(dataset, batch_size=16, num_workers=5)
 
     @torch.no_grad()
-    def count_classes_mean_and_std(self):
+    def count_classes_mean_and_std(self, train_data=True):
         """"""
         labels = ["label"]
         labels.extend(config.LABELS)
@@ -96,6 +101,15 @@ class DatasetPreprocessing:
             f"Dataset has {len(set(results['car_model']))} different car models.")
         logging.info(
             f"Dataset has {len(set(results['year']))} different car years.\n")
+        vals = {
+            "num_classes": results,
+            "mean": mean,
+            "std": std,
+        }
+        filename = config.STATS_TRAIN_FILE_PATH if train_data else config.STATS_TEST_FILE_PATH
+        with open(filename, "wb") as f:
+            pickle.dump(vals, f, protocol=pickle.HIGHEST_PROTOCOL)
+
         return results, mean, std
 
     @torch.no_grad()
@@ -111,7 +125,8 @@ class DatasetPreprocessing:
             std += image.std(2).sum(0)
         mean /= number_of_images
         std /= number_of_images
-        logging.info(f"The dataset mean is {mean} and the standard deviation: {std}.\n")
+        logging.info(
+            f"The dataset mean is {mean} and the standard deviation: {std}.\n")
         return mean, std
 
     def build_csv_from_dataset(self):
@@ -151,9 +166,6 @@ class DatasetPreprocessing:
 
     def remove_missing_data(self, augmentation):
         pool = ThreadPool()
-        from torchvision.utils import save_image
-        import random
-        import string
         transform = transforms.Compose([
             transforms.ToTensor(),
             transforms.RandomRotation(degrees=(0, 360))
@@ -190,7 +202,7 @@ class DatasetPreprocessing:
                 new_name = os.path.join(self.path, name)
                 os.rename(entry, new_name)
                 for image in os.scandir(new_name):
-                    pool.apply_async(worker, (image, ))
+                    pool.apply_async(worker, (image,))
         pool.close()
         pool.join()
         logging.info("Dataset cleaned successfully!")
