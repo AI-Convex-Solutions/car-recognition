@@ -57,24 +57,28 @@ class CustomDataset(Dataset):
 class DatasetPreprocessing:
     """Preprocess the dataset for Pytorch."""
 
-    def __init__(self, database_path, csv_path):
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def load_dataloader(csv_path):
         transform = transforms.Compose([
             transforms.Resize((224, 224)),
             transforms.ToTensor(),
         ])
         dataset = CustomDataset(csv_path=csv_path, transform=transform)
-        self.path = database_path
-        self.csv_path = csv_path
-        self.dataloader = DataLoader(dataset, batch_size=16, num_workers=5)
+        dataloader = DataLoader(dataset, batch_size=16, num_workers=5)
+        return dataloader
 
     @torch.no_grad()
-    def count_classes_mean_and_std(self, train_data=True):
+    def count_classes_mean_and_std(self, csv_path, train_data=True):
         """"""
         labels = ["label"]
         labels.extend(config.LABELS)
         results = {label: [] for label in labels}
         number_of_images, mean, std = 0, 0, 0
-        for batch_index, data in enumerate(self.dataloader):
+        dataloader = self.load_dataloader(csv_path)
+        for batch_index, data in enumerate(dataloader):
             # Compute mean, std.
             image = data["image"]
             # Rearrange the shape from [B, C, W, H] to be [B, C, W * H]:
@@ -113,9 +117,10 @@ class DatasetPreprocessing:
         return results, mean, std
 
     @torch.no_grad()
-    def compute_dataset_mean_and_std(self):
+    def compute_dataset_mean_and_std(self, csv_path):
+        dataloader = self.load_dataloader(csv_path)
         number_of_images, mean, std = 0, 0, 0
-        for batch_index, data in enumerate(self.dataloader):
+        for batch_index, data in enumerate(dataloader):
             image = data["image"]
             # Rearrange the shape from [B, C, W, H] to be [B, C, W * H]:
             # [120, 3, 224, 224] -> [120, 3, 50176]
@@ -129,10 +134,11 @@ class DatasetPreprocessing:
             f"The dataset mean is {mean} and the standard deviation: {std}.\n")
         return mean, std
 
-    def build_csv_from_dataset(self):
+    @staticmethod
+    def build_csv_from_dataset(database_path):
         """"""
         data = []
-        for entry in os.scandir(self.path):
+        for entry in os.scandir(database_path):
             if entry.is_dir:
                 for image in os.scandir(entry):
                     data.append(
@@ -164,7 +170,8 @@ class DatasetPreprocessing:
             json.dump(label_codes, f)
         logging.info("Dataset was build successfully!")
 
-    def remove_missing_data(self, augmentation):
+    @staticmethod
+    def remove_missing_data(database_path, augmentation):
         pool = ThreadPool()
         transform = transforms.Compose([
             transforms.ToTensor(),
@@ -174,6 +181,7 @@ class DatasetPreprocessing:
         def worker(image):
             try:
                 img = Image.open(image.path).convert('RGB')
+                # save(new_imag)
                 if augmentation:
                     new_image = transform(img)
                     image_name = ''.join(
@@ -185,7 +193,7 @@ class DatasetPreprocessing:
             except Exception as e:
                 os.remove(image)
 
-        for entry in os.scandir(self.path):
+        for entry in os.scandir(database_path):
             if entry.is_dir:
                 name = entry.name.split("_")
                 if "" in name:
@@ -199,7 +207,7 @@ class DatasetPreprocessing:
                     name[0] = "Mercedes Benz"
                 name = [word.replace("ë", "e").lower() for word in name]
                 name = "_".join(name)
-                new_name = os.path.join(self.path, name)
+                new_name = os.path.join(database_path, name)
                 os.rename(entry, new_name)
                 for image in os.scandir(new_name):
                     pool.apply_async(worker, (image,))

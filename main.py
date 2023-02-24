@@ -49,13 +49,15 @@ args = parser.parse_args()
 
 # Clean the data for the first time.
 if args.preprocess:
-    preprocessor = DatasetPreprocessing(
+    preprocessor = DatasetPreprocessing()
+    preprocessor.remove_missing_data(
         database_path=config.DATASET_PATH,
-        csv_path=config.TRAIN_CSV_FILE_PATH,
+        augmentation=config.PERFORM_AUGMENTATION
     )
-    preprocessor.remove_missing_data(augmentation=config.PERFORM_AUGMENTATION)
-    preprocessor.build_csv_from_dataset()
-    preprocessor.count_classes_mean_and_std()
+    preprocessor.build_csv_from_dataset(database_path=config.DATASET_PATH)
+    preprocessor.count_classes_mean_and_std(
+        csv_path=config.TRAIN_CSV_FILE_PATH
+    )
     clear_memory(preprocessor)
 
 with open(config.STATS_TRAIN_FILE_PATH, "rb") as file:
@@ -122,15 +124,15 @@ if args.train:
         config.NUM_EPOCHS,
         dataloaders,
         dataset_sizes,
-        checkpoint=False
+        checkpoint=config.LOAD_CHECKPOINT
     )
 
 if args.evaluate:
-    processor = DatasetPreprocessing(
-        database_path=config.DATASET_PATH,
-        csv_path=config.TEST_CSV_FILE_PATH,
+    processor = DatasetPreprocessing()
+    _, mean, std = processor.count_classes_mean_and_std(
+        csv_path=config.TEST_CSV_FILE_PATH
     )
-    _, mean, std = processor.count_classes_mean_and_std()
+
     clear_memory(processor)
     test_data = CustomDataset(
         csv_path=config.TEST_CSV_FILE_PATH,

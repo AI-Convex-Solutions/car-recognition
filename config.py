@@ -3,7 +3,7 @@ from datetime import datetime
 time_now = datetime.now()
 
 # Datasets
-DATASET_PATH = "./databases/Sampledb"
+DATASET_PATH = "./databases/VMMRdb"
 TEST_CSV_FILE_PATH = "./datasets/test.csv"
 TRAIN_CSV_FILE_PATH = "./datasets/train.csv"
 JSON_LABELS_FILE_PATH = "./datasets/label_codes.json"
@@ -26,10 +26,13 @@ BATCH_SIZE = 16
 VAL_SPLIT_SIZE = 0.2
 TEST_SPLIT_SIZE = 0.1
 RANDOM_SEED = 42
-NUM_EPOCHS = 20
+NUM_EPOCHS = 40
 LEARNING_RATE = 0.001
 MOMENTUM = 0.9
 WEIGHT_DECAY = 0.1
 
 # Label names
 LABELS = ["manufacturer", "car_model", "year"]
+
+# Load checkpoint
+LOAD_CHECKPOINT = False
