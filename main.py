@@ -50,6 +50,12 @@ args = parser.parse_args()
 # Clean the data for the first time.
 if args.preprocess:
     preprocessor = DatasetPreprocessing()
+    # Needed if one wants to merge databases.
+    # preprocessor.merge_datasets(
+        # path1=config.DB1,
+        # path2=config.DB2,
+        # new_dataset_path=config.NEW_DATASET_PATH
+    # )
     preprocessor.remove_missing_data(
         database_path=config.DATASET_PATH,
         augmentation=config.PERFORM_AUGMENTATION

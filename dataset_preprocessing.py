@@ -173,6 +173,12 @@ class DatasetPreprocessing:
     @staticmethod
     def remove_missing_data(database_path, augmentation):
         pool = ThreadPool()
+        # transforms for the current image to make it smaller.
+        resize_transform = transforms.Compose([
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+        ])
+        # transforms for the new images: rotating images randomly.
         transform = transforms.Compose([
             transforms.ToTensor(),
             transforms.RandomRotation(degrees=(0, 360))
@@ -181,7 +187,8 @@ class DatasetPreprocessing:
         def worker(image):
             try:
                 img = Image.open(image.path).convert('RGB')
-                # save(new_imag)
+                img = resize_transform(img)
+                save_image(img, image.path)
                 if augmentation:
                     new_image = transform(img)
                     image_name = ''.join(
@@ -214,3 +221,12 @@ class DatasetPreprocessing:
         pool.close()
         pool.join()
         logging.info("Dataset cleaned successfully!")
+
+    @staticmethod
+    def merge_datasets(path1, path2, new_dataset_path):
+        import shutil
+        os.makedirs(new_dataset_path, exist_ok=True)
+        shutil.copytree(path1, new_dataset_path, dirs_exist_ok=True)
+        shutil.copytree(path2, new_dataset_path, dirs_exist_ok=True)
+
+

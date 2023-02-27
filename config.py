@@ -3,7 +3,7 @@ from datetime import datetime
 time_now = datetime.now()
 
 # Datasets
-DATASET_PATH = "./databases/VMMRdb"
+DATASET_PATH = "./databases/allDB"
 TEST_CSV_FILE_PATH = "./datasets/test.csv"
 TRAIN_CSV_FILE_PATH = "./datasets/train.csv"
 JSON_LABELS_FILE_PATH = "./datasets/label_codes.json"
@@ -36,3 +36,8 @@ LABELS = ["manufacturer", "car_model", "year"]
 
 # Load checkpoint
 LOAD_CHECKPOINT = False
+
+# merging databases
+NEW_DATASET_PATH = "./databases/allDB"
+DB1 = "./databases/VMMRdb"
+DB2 = "./databases/VNSHdb"
