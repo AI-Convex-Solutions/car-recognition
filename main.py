@@ -1,8 +1,9 @@
 import argparse
 import logging
-import json
+import sys
 import pickle
 from pathlib import Path
+from datetime import datetime
 
 import numpy as np
 import torch
@@ -13,7 +14,7 @@ import config
 from dataset_preprocessing import CustomDataset, DatasetPreprocessing
 from test import test_model
 from train import train_model, Classifier
-from utils import clear_memory
+from utils import clear_memory, exc_handler
 
 Path(config.IMAGE_PATHS).mkdir(parents=True, exist_ok=True)
 Path(config.CHECKPOINT_PATH).mkdir(parents=True, exist_ok=True)
@@ -23,7 +24,7 @@ Path(config.LOGS_PATHS).mkdir(parents=True, exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    filename=f"{config.LOGS_PATHS}logs",
+    filename=f"{config.LOGS_PATHS}{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}",
     filemode='w'
 )
 console = logging.StreamHandler()
@@ -31,6 +32,7 @@ console.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 console.setFormatter(formatter)
 logging.getLogger("").addHandler(console)
+sys.excepthook = exc_handler
 logging.info("Starting script...")
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

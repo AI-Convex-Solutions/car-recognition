@@ -21,6 +21,9 @@ TEST_BEST_MODEL_PATH = f"./models/best_model_{time_now}"
 IMAGE_PATHS = "./images/"
 LOGS_PATHS = "./logs/"
 
+# Pretrained model
+PRETRAINED = False
+
 # Model Parameters
 BATCH_SIZE = 16
 VAL_SPLIT_SIZE = 0.2
@@ -30,6 +33,11 @@ NUM_EPOCHS = 40
 LEARNING_RATE = 0.001
 MOMENTUM = 0.9
 WEIGHT_DECAY = 0.1
+
+# Loss constraints
+CON1 = 1
+CON2 = 5
+CON3 = 10
 
 # Label names
 LABELS = ["manufacturer", "car_model", "year"]

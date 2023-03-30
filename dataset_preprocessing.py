@@ -224,9 +224,9 @@ class DatasetPreprocessing:
 
     @staticmethod
     def merge_datasets(path1, path2, new_dataset_path):
-        import shutil
         os.makedirs(new_dataset_path, exist_ok=True)
         shutil.copytree(path1, new_dataset_path, dirs_exist_ok=True)
         shutil.copytree(path2, new_dataset_path, dirs_exist_ok=True)
+        logging.info("Datasets merged successfully!")
 
 

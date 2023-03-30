@@ -13,8 +13,11 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 def create_model(num_classes):
-    model = models.resnet152(weights=models.ResNet152_Weights.DEFAULT)
-    # Resnet152 has a final layer with 1000 classes. We change it to the number of our own clases.
+    model = models.resnet152(
+        weights=models.ResNet152_Weights.DEFAULT if config.PRETRAINED else None
+    )
+    # Resnet152 has a final layer with 1000 classes.
+    # We change it to the number of our own clases.
     model.fc = torch.nn.Linear(model.fc.in_features, num_classes)
     model = model.to(device)
     return model
@@ -56,6 +59,8 @@ def compute_loss(outputs, labels, criterion):
         all_preds[label] = preds
 
     losses = {k: criterion(outputs[k], labels[k]) for k, v in labels.items()}
+    # losses["car_model"] = losses["car_model"] * config.CON2
+    # losses["year"] = losses["car_model"] * config.CON3
     losses = sum(losses.values())
     return losses, all_preds
 
