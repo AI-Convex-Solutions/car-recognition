@@ -1,6 +1,5 @@
-/checkpoints
-/models
-/databases
-/images
-/datasets
-/logs
+car_recognition_model/models
+car_recognition_model/databases
+car_recognition_model/images
+car_recognition_model/datasets
+car_recognition_model/logs
