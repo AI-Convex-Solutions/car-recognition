@@ -49,14 +49,20 @@ parser.add_argument("-e", "--evaluate", action="store_true",
                     help="Test the trained model.")
 args = parser.parse_args()
 
+if Path(config.STATS_TRAIN_FILE_PATH).is_file():
+    with open(config.STATS_TRAIN_FILE_PATH, "rb") as file:
+        stats = pickle.load(file)
+        num_classes, mean, std = stats["num_classes"], stats["mean"], stats[
+            "std"]
+
 # Clean the data for the first time.
 if args.preprocess:
     preprocessor = DatasetPreprocessing()
     # Needed if one wants to merge databases.
     # preprocessor.merge_datasets(
-        # path1=config.DB1,
-        # path2=config.DB2,
-        # new_dataset_path=config.NEW_DATASET_PATH
+    # path1=config.DB1,
+    # path2=config.DB2,
+    # new_dataset_path=config.NEW_DATASET_PATH
     # )
     preprocessor.remove_missing_data(
         database_path=config.DATASET_PATH,
@@ -66,11 +72,11 @@ if args.preprocess:
     preprocessor.count_classes_mean_and_std(
         csv_path=config.TRAIN_CSV_FILE_PATH
     )
+    preprocessor.count_classes_mean_and_std(
+        csv_path=config.TEST_CSV_FILE_PATH,
+        train_data=False
+    )
     clear_memory(preprocessor)
-
-with open(config.STATS_TRAIN_FILE_PATH, "rb") as file:
-    stats = pickle.load(file)
-    num_classes, mean, std = stats["num_classes"], stats["mean"], stats["std"]
 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
@@ -108,7 +114,6 @@ if args.train:
 
     dataset_sizes = {"train": len(train_data), "val": len(val_data)}
 
-    # model = create_model(num_classes)
     model = Classifier(num_classes).to(device)
     criterion = torch.nn.CrossEntropyLoss()
 
@@ -136,12 +141,6 @@ if args.train:
     )
 
 if args.evaluate:
-    processor = DatasetPreprocessing()
-    _, mean, std = processor.count_classes_mean_and_std(
-        csv_path=config.TEST_CSV_FILE_PATH
-    )
-
-    clear_memory(processor)
     test_data = CustomDataset(
         csv_path=config.TEST_CSV_FILE_PATH,
         transform=transform

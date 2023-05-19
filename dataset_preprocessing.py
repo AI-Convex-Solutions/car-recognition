@@ -1,10 +1,10 @@
 import json
 import logging
 import os
+import pickle
 import random
 import shutil
 import string
-import pickle
 from multiprocessing.pool import ThreadPool
 
 import pandas as pd
@@ -73,6 +73,7 @@ class DatasetPreprocessing:
     @torch.no_grad()
     def count_classes_mean_and_std(self, csv_path, train_data=True):
         """"""
+        logging.info("Started counting classes...")
         labels = ["label"]
         labels.extend(config.LABELS)
         results = {label: [] for label in labels}
@@ -137,6 +138,7 @@ class DatasetPreprocessing:
     @staticmethod
     def build_csv_from_dataset(database_path):
         """"""
+        logging.info("Building CSVs...")
         data = []
         for entry in os.scandir(database_path):
             if entry.is_dir:
@@ -172,6 +174,7 @@ class DatasetPreprocessing:
 
     @staticmethod
     def remove_missing_data(database_path, augmentation):
+        logging.info("Removing missing data!")
         pool = ThreadPool()
         # transforms for the current image to make it smaller.
         resize_transform = transforms.Compose([
@@ -228,5 +231,3 @@ class DatasetPreprocessing:
         shutil.copytree(path1, new_dataset_path, dirs_exist_ok=True)
         shutil.copytree(path2, new_dataset_path, dirs_exist_ok=True)
         logging.info("Datasets merged successfully!")
-
-

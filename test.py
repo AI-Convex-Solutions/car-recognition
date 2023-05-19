@@ -1,15 +1,15 @@
-import matplotlib.pyplot as plt
-import torch
 import logging
 
+import matplotlib.pyplot as plt
+import torch
+
 import config
-from train import create_model, Classifier
+from train import Classifier
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 def test_model(test_data, test_loader, num_classes):
-    # model = create_model(num_classes)
     model = Classifier(num_classes).to(device)
     model.load_state_dict(torch.load(config.TEST_BEST_MODEL_PATH))
     model.eval()
