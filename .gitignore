@@ -3,7 +3,6 @@ model/databases
 model/images
 model/datasets
 model/logs
-<<<<<<< HEAD
 model/finished_models/datasets/test.csv
 model/finished_models/datasets/train.csv
 
