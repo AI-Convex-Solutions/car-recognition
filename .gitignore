@@ -1,6 +1,8 @@
-/checkpoints
-/models
-/databases
-/images
-/datasets
-/logs
+model/models
+model/databases
+model/images
+model/datasets
+model/logs
+
+*.pt
+*.pth
