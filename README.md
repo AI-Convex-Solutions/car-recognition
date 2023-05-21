@@ -1,11 +1,8 @@
 # Car Recognition
 
 ### Kushtet paraprake
-1. Shkarko skedarin e modelit nga `https://www.dropbox.com/s/95tefoi8uz4fhor/alpha_model?dl=0`
+Shkarko skedarin e modelit nga `https://www.dropbox.com/s/95tefoi8uz4fhor/alpha_model?dl=0`
 dhe vendose në: `model/finished_models/alpha/`
-
-2. Shkarko edhe skedarin tjetër `https://www.dropbox.com/s/tj2m1k9rhgttmiq/resnet152-f82ba261.pth?dl=0`
-dhe vendose në dosjen bazë, në të njejtin nivel me `api_main.py`.
 
 ### Përdorimi
 Fillimisht ndërtoje Dokerin: `docker build --tag car-recognition .`.
