@@ -1,19 +1,19 @@
 import io
+import json
 import pickle
 
-from PIL import Image
-from torchvision import transforms
-import json
-
-from torchvision import models
 import torch
-
+from PIL import Image
+from torchvision import models
+from torchvision import transforms
 
 LABELS = ["manufacturer", "car_model", "year"]
 STATS_TRAIN_FILE_PATH = "model/finished_models/alpha/datasets/stats_train.pickle"
 TEST_BEST_MODEL_PATH = "model/finished_models/alpha/alpha_model.pt"
 LABEL_CODES = "model/finished_models/alpha/datasets/label_codes.json"
+COLOR_MODEL_PATH = "model/colors/final_model_85.pt"
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
 
 def predict_result(image_bytes):
     # Process
@@ -81,3 +81,32 @@ class Classifier(torch.nn.Module):
         for label in LABELS:
             data[label] = getattr(self, label)(x)
         return data
+
+
+def predict_color(image_bytes):
+    final_model = torch.load(COLOR_MODEL_PATH, map_location="cpu")
+    class_names = [
+        'Black',
+        'Blue',
+        'Brown',
+        'Green',
+        'Orange',
+        'Red',
+        'Silver',
+        'White',
+        'Yellow',
+    ]
+
+    image = Image.open(io.BytesIO(image_bytes)).convert('RGB')
+    transform = transforms.Compose([
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    ])
+
+    image = transform(image).unsqueeze(0)
+    preds = final_model(image)
+    probabilities = torch.nn.functional.softmax(preds, dim=1)
+    top_probability, top_class = probabilities.topk(1, dim=1)
+    return class_names[top_class.item()]

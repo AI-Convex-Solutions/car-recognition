@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from api_calls import predict_result
+from api_calls import predict_result, predict_color
 
 
 app = Flask(__name__)
@@ -23,7 +23,8 @@ def predict():
         try:
             img_bytes = file.read()
             result = predict_result(img_bytes)
-
+            color_prediction = predict_color(img_bytes)
+            result["color"] = color_prediction
             return jsonify(result)
         except Exception as e:
             print(e)
