@@ -5,6 +5,7 @@ model/datasets
 model/logs
 model/finished_models/datasets/test.csv
 model/finished_models/datasets/train.csv
+test_some_cars
 
 *.pt
 *.pth
