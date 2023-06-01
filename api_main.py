@@ -4,7 +4,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-CORS(app, origins=['http://localhost:3001', 'https://auto-ai.onrender.com'])
+CORS(app, origins=['http://localhost:3001', 'https://auto-ai.onrender.com', 'https://cardetect.tech'])
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 def allowed_file(filename):
