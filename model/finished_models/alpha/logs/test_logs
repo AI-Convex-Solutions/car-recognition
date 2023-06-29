@@ -1,0 +1,3 @@
+2023-05-21 14:48:28,051 - INFO - Starting script...
+2023-05-21 14:48:28,092 - INFO - Manufacturer number of classes is: 89
+2023-05-21 14:58:24,476 - INFO - Model Accuracy: {'manufacturer': 0.9083132545480043, 'car_model': 0.8072181639703726, 'year': 0.3326576662714652}, Samples: 78441
