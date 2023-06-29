@@ -3,6 +3,14 @@ www.cardetect.tech
 
 # Car Recognition (shqip)
 
+### Modeli
+Modeli është trajnuar duke përdorur fotografi të më shumë se 300.000 makinave. Çdo fotoje modeli i përgjigjet me:
+- Kompaninë e automjetit (audi, bmw, etj.) - Saktësia 91%,
+- Vitin e prodhimit (2013, 2019) - Saktësisa 81%,
+- Modelin e automjetit (Golf 5, Clio) - Saktësia 33%,
+- Ngjyrën e automjetit (Kuqe, Zezë) - [Model i gatshëm](https://github.com/nikalosa/Vehicle-Make-Color-Recognition). 
+
+
 ### Kushtet paraprake
 1. Shkarko skedarin e modelit nga `https://www.dropbox.com/s/95tefoi8uz4fhor/alpha_model?dl=0`
 dhe vendose në: `model/finished_models/alpha/`
@@ -34,6 +42,14 @@ curl --location --request POST 'http://localhost:5000/predict' \
 ---
 
 # Car Recognition (English)
+
+### Model
+Modeli është trajnuar duke përdorur fotografi të më shumë se 300.000 makinave. Çdo fotoje modeli i përgjigjet me:
+The model is trained using 300,000+ car photos. The model returns:
+- Car manufcaturer (audi, bmw, etj.) - Accuracy 91%,
+- Manufactured year (2013, 2019) - Accuracy 81%,
+- Car model (Golf 5, Clio) - Accuracy 33%,
+- Car color (Red, Black) - [Pretrained](https://github.com/nikalosa/Vehicle-Make-Color-Recognition).
 
 ### Requirements
 1. Download the file `https://www.dropbox.com/s/95tefoi8uz4fhor/alpha_model?dl=0`
