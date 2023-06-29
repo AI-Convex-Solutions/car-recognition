@@ -9,7 +9,7 @@ dhe vendose në: `model/finished_models/alpha/`
 2. Shkarko edhe skedarin tjetër `https://www.dropbox.com/s/hbftvpih9g4rshc/final_model_85.pt?dl=0`
 dhe vendose në: `model/colors/`.
 
-3. Shkarko skedarin `aa` dhe vendose në dosjen bazë `./resnet152-f82ba261.pth`.
+3. Shkarko skedarin `https://www.dropbox.com/s/4orqou90l7fp97v/resnet152-f82ba261.pth?dl=0` dhe vendose në dosjen bazë `./resnet152-f82ba261.pth`.
 
 ### Përdorimi
 Fillimisht ndërtoje Dokerin: `docker build --tag car-recognition .`.
@@ -40,7 +40,7 @@ and place it under: `model/finished_models/alpha/`
 2. Download the file `https://www.dropbox.com/s/hbftvpih9g4rshc/final_model_85.pt?dl=0`
 place it under: `model/colors/`.
 
-3. Download the file `aa` and place it under the root repository `./resnet152-f82ba261.pth`.
+3. Download the file `https://www.dropbox.com/s/4orqou90l7fp97v/resnet152-f82ba261.pth?dl=0` and place it under the root repository `./resnet152-f82ba261.pth`.
 
 ### Usage
 Start by building the dockerfile: `docker build --tag car-recognition .`.
