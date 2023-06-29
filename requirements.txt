@@ -1,2 +1,4 @@
 typing_extensions==4.4.0
 urllib3==1.26.14
+Werkzeug==2.3.4
+Flask-Cors==3.0.10

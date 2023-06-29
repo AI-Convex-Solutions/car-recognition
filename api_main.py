@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 from api_calls import predict_result, predict_color
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+CORS(app, origins=['http://localhost:3001', 'https://auto-ai.onrender.com', 'https://cardetect.tech'])
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
