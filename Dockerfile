@@ -22,7 +22,7 @@ WORKDIR /car_recognition
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
-# COPY resnet152-f82ba261.pth /root/.cache/torch/hub/checkpoints/
+COPY resnet152-f82ba261.pth /root/.cache/torch/hub/checkpoints/
 COPY . .
 
 ENV PYTHONUNBUFFERED=1

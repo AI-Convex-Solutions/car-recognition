@@ -1,21 +1,24 @@
 import io
 import json
 import pickle
+import warnings
 
 import torch
 from PIL import Image
 from torchvision import models
 from torchvision import transforms
 
+
+warnings.filterwarnings("ignore", category=torch.serialization.SourceChangeWarning)
 LABELS = ["manufacturer", "car_model", "year"]
 STATS_TRAIN_FILE_PATH = "model/finished_models/alpha/datasets/stats_train.pickle"
 TEST_BEST_MODEL_PATH = "model/finished_models/alpha/alpha_model.pt"
 LABEL_CODES = "model/finished_models/alpha/datasets/label_codes.json"
 COLOR_MODEL_PATH = "model/colors/final_model_85.pt"
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device('cpu')  #  torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
-def predict_result(image_bytes):
+def predict_result(image_bytes, check_if_car=False):
     # Process
     with open(STATS_TRAIN_FILE_PATH, "rb") as file:
         stats = pickle.load(file)
@@ -33,6 +36,28 @@ def predict_result(image_bytes):
         transforms.Normalize(mean=mean, std=std)
     ])
     image = transform(image).unsqueeze(0)
+
+    # Predict whether the given image is a car.
+    if check_if_car:
+        accepted_results = [
+            "grille", "recreational vehicle", "car mirror",
+            "car wheel", "passenger car", "sports car",
+            "streetcar", "cab", "pickup", "tow truck",
+            "trailer truck", "garbage truck", "minibus",
+            "school bus", "trolleybus", "radio"
+        ]
+        weights = models.ResNet152_Weights.DEFAULT
+        model = models.resnet152(weights=weights)
+        model.eval()
+        with torch.no_grad():
+            inputs_ = image.to(device)
+            outputs = model(inputs_)
+            _, preds = torch.max(outputs, dim=1)
+            result = weights.meta["categories"][preds.item()]
+            print(result)
+            if result in accepted_results:
+                return True
+            return False
 
     # Predict
     model = Classifier(num_classes).to(device)

@@ -5,6 +5,8 @@ from api_calls import predict_result, predict_color
 app = Flask(__name__)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+
 def allowed_file(filename):
     # xxx.png
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -22,10 +24,12 @@ def predict():
 
         try:
             img_bytes = file.read()
-            result = predict_result(img_bytes)
-            color_prediction = predict_color(img_bytes)
-            result["color"] = color_prediction
-            return jsonify(result)
+            if predict_result(img_bytes, check_if_car=True):
+                result = predict_result(img_bytes)
+                color_prediction = predict_color(img_bytes)
+                result["color"] = color_prediction
+                return jsonify(result)
+            return jsonify({'error': 'Please upload a valid car image.'})
         except Exception as e:
             print(e)
             return jsonify({'error': 'error during prediction'})
