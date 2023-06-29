@@ -1,6 +1,7 @@
-# Car Recognition (shqip)
+# DEMO
+www.cardetect.tech
 
-DEMO: www.cardetect.tech
+# Car Recognition (shqip)
 
 ### Kushtet paraprake
 1. Shkarko skedarin e modelit nga `https://www.dropbox.com/s/95tefoi8uz4fhor/alpha_model?dl=0`
@@ -30,6 +31,7 @@ curl --location --request POST 'http://localhost:5000/predict' \
 - [] API-ji duhet të lejojë disa imazhe në një kërkesë.
 - [] Pranimi i pikselave e jo i imazheve.
 
+---
 
 # Car Recognition (English)
 
