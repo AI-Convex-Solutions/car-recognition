@@ -4,7 +4,6 @@ www.cardetect.tech
 # Car Recognition (English)
 
 ### Model
-Modeli është trajnuar duke përdorur fotografi të më shumë se 300.000 makinave. Çdo fotoje modeli i përgjigjet me:
 The model is trained using 300,000+ car photos. The model returns:
 - Car manufcaturer (audi, bmw, etj.) - Accuracy 91%,
 - Manufactured year (2013, 2019) - Accuracy 33%,
