@@ -26,12 +26,12 @@ def predict():
 
         try:
             img_bytes = file.read()
-            if predict_result(img_bytes, check_if_car=True):
-                result = predict_result(img_bytes)
-                color_prediction = predict_color(img_bytes)
-                result["color"] = color_prediction
-                return jsonify(result)
-            return jsonify({'error': 'Please upload a valid car image.'})
+            # disabled this because it does not work well.
+            # if predict_result(img_bytes, check_if_car=True):
+            result = predict_result(img_bytes)
+            color_prediction = predict_color(img_bytes)
+            result["color"] = color_prediction
+            return jsonify(result)
         except Exception as e:
             print(e)
             return jsonify({'error': 'error during prediction'})
