@@ -21,7 +21,7 @@ place it under: `model/colors/`.
 
 ### Usage
 Start by building the dockerfile: `docker build --tag car-recognition .`.
-Then start docker: `docker run -d -p 5000:5000 car-recogntion`.
+Then start docker: `docker run -d -p 5000:5000 car-recognition`.
 
 ### Requests
 
@@ -61,7 +61,7 @@ dhe vendose në: `model/colors/`.
 
 ### Përdorimi
 Fillimisht ndërtoje Dokerin: `docker build --tag car-recognition .`.
-Pastaj filloje dokerin: `docker run -d -p 5000:5000 car-recogntion`.
+Pastaj filloje dokerin: `docker run -d -p 5000:5000 car-recognition`.
 
 ### Kërkesat
 
